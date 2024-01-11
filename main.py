@@ -9,11 +9,11 @@ app = FastAPI()
 #     await settings.initialize_database()
 
 from routes.admin_main import router as event_router                   
-# from routes.mypage import router as second_router
+from routes.mypage import router as second_router
 from routes.plan_trip import router as users_router
 
 app.include_router(event_router, prefix="/admin")
-# app.include_router(second_router, prefix="/mypage")
+app.include_router(second_router, prefix="/mypage")
 app.include_router(users_router, prefix="/plan_trip")
 
 from fastapi import Request                                
@@ -38,3 +38,12 @@ async def root(Request:Request):
 @app.post("/")                      
 async def root(Request:Request):
     return templates.TemplateResponse("main.html",{'request':Request})
+
+@app.get("/login")                     
+async def root(Request:Request):
+    return templates.TemplateResponse("login.html",{'request':Request})
+
+
+@app.post("/login")                      
+async def root(Request:Request):
+    return templates.TemplateResponse("login.html",{'request':Request})
