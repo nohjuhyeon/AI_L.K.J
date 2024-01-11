@@ -1,5 +1,7 @@
 ### #여행 플랜 사이트
 
+![img](https://github.com/nohjuhyeon/AI_L.K.J/assets/151099231/be4e13da-8bc0-4ce7-a11b-dc324bb60089)
+
 ### -팀 구성원 
 
 |팀원|소개|
