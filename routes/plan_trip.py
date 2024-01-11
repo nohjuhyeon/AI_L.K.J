@@ -62,14 +62,14 @@ async def list_post(request:Request):
     return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request})
 
 ## 투어 예약
-@router.post("/reserve_event") # 펑션 호출 방식
+@router.post("/reserve_tour") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_event.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
 
-@router.get("/reserve_event") # 펑션 호출 방식
+@router.get("/reserve_tour") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_event.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})

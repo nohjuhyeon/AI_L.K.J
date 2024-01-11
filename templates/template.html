@@ -7,6 +7,7 @@
     <title>Forms</title>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         nav {
             margin-top: 30px;
@@ -58,7 +59,7 @@
                             <a class="dropdown-item" href="/plan_trip/reserve_transfer">교통</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/plan_trip/reserve_event">투어/티켓</a>
+                            <a class="dropdown-item" href="/plan_trip/reserve_tour">투어/티켓</a>
                         </li>
                     </ul>
                 </li>
@@ -69,10 +70,10 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">이벤트</a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="/plan_trip/reco_trip_plan">베스트 여행지</a>
+                            <a class="dropdown-item" href="/event/best_dorm">베스트 여행지</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/plan_trip/reserve_dorm">베스트 숙소</a>
+                            <a class="dropdown-item" href="/event/best_dorm">베스트 숙소</a>
                         </li>
                     </ul>
                 </li>
@@ -132,5 +133,11 @@
 </body>
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+    });
+  </script>
 </html>
