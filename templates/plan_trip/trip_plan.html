@@ -1,4 +1,44 @@
 {% extends "template.html"%}
 {%block main_container%}
-여행 계획
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px; height: 500px;">
+    <a href=""
+        class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+        <svg class="bi pe-none me-2" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-5 fw-semibold">여행</span>
+    </a>
+    <div class="list-group list-group-flush border-bottom scrollarea">
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+            <div class="w-100 align-items-center justify-content-between">
+                <strong>1일차</strong>
+                <ol>
+                    <li>첫번째 일정</li>
+                    <li>두번째 일정</li>
+                    <li>세번째 일정</li>
+                </ol>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+            <div class="w-100 align-items-center justify-content-between">
+                <strong>2일차</strong>
+                <ol>
+                    <li>첫번째 일정</li>
+                    <li>두번째 일정</li>
+                    <li>세번째 일정</li>
+                </ol>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+            <div class="w-100 align-items-center justify-content-between">
+                <strong>3일차</strong>
+                <ol>
+                    <li>첫번째 일정</li>
+                    <li>두번째 일정</li>
+                    <li>세번째 일정</li>
+                </ol>
+            </div>
+        </a>
+    </div>
+</div>
 {%endblock%}
