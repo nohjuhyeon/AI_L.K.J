@@ -8,6 +8,7 @@ router = APIRouter()
 
 templates = Jinja2Templates(directory="templates/")
 
+
 ## 여행 계획 추천
 @router.post("/reco_trip_plan") # 펑션 호출 방식
 async def list_post(request:Request):
