@@ -1,9 +1,112 @@
 {% extends "template.html"%}
 {%block main_container%}
-<div class="row" >
-    <div class="col-md-4" style="border-style: dotted;">이미지</div>
-    <div class="col-md-8"style="border-style: dotted;">
-        투어/티켓
+<div class="col-md-3" style="border-style: ridge;">
+    투어/티켓
+</div>
+
+<div class="d-flex gap-2 justify-content-center py-5">
+    <button class="btn btn-primary rounded-pill px-3" type="button">전체</button>
+    <button class="btn btn-info rounded-pill px-3" type="button"><a href="">스파/찜질</a></button>
+    <button class="btn btn-success rounded-pill px-3" type="button"><a href="">캠핑/레져</a></button>
+    <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">테마/놀이</a></button>
+    <button class="btn btn-warning rounded-pill px-3" type="button"><a href="">체험</a></button>
+</div>
+
+<div>
+    <button type="button" class="">뒤로가기</button>
+    <button type="button" class="">건너뛰기</button>
+    <button type="button" class="">다음</button>
+</div>
+
+<div class="selector_box">
+    <div class="border d-flex justify-content-end"><select id="">
+            <option>selector</option>
+            <option value="0">낮은가격순</option>
+            <option value="1">높은가격순</option>
+            <option value="2">낮은별점순</option>
+            <option value="3">높은별점순</option>
+            <option value="4">가장 가까운 거리순</option>
+        </select></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3" style="border-style: ridge;">
+        <img src="그림 이미지 넣을예정" alt="Tour Image">
+    </div>
+    <div class="col-md-9" style="border-style: ridge;">
+        <div class="tour_date_info">
+            <h4>헬스랜드 스파 & 마사지</h4>
+            <div>
+                마사지를 받으며 편안한 휴식을 갖는 시간
+            </div>
+            <div>
+                서울 강남
+            </div>
+        </div>
+        <div class="tour_price_info">
+            <em><strong>50,000</strong> 원~</em>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-md-4" style="border-style: ridge;">상품 카테고리</div>
+            <div class="col-md-4">
+                <div style="border-style: ridge;">상품 별점</div>
+                <div style="border-style: ridge;">상품 리뷰</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3" style="border-style: ridge;">
+        <img src="그림 이미지 넣을예정" alt="Tour Image">
+    </div>
+    <div class="col-md-9" style="border-style: ridge;">
+        <div class="tour_date_info">
+            <h4>헬스랜드 스파 & 마사지</h4>
+            <div>
+                마사지를 받으며 편안한 휴식을 갖는 시간
+            </div>
+            <div>
+                서울 강남
+            </div>
+        </div>
+        <div class="tour_price_info">
+            <em><strong>50,000</strong> 원~</em>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-md-4" style="border-style: ridge;">상품 카테고리</div>
+            <div class="col-md-4">
+                <div style="border-style: ridge;">상품 별점</div>
+                <div style="border-style: ridge;">상품 리뷰</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3" style="border-style: ridge;">
+        <img src="그림 이미지 넣을예정" alt="Tour Image">
+    </div>
+    <div class="col-md-9" style="border-style: ridge;">
+        <div class="tour_date_info">
+            <h4>헬스랜드 스파 & 마사지</h4>
+            <div>
+                마사지를 받으며 편안한 휴식을 갖는 시간
+            </div>
+            <div>
+                서울 강남
+            </div>
+        </div>
+        <div class="tour_price_info">
+            <em><strong>50,000</strong> 원~</em>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-md-4" style="border-style: ridge;">상품 카테고리</div>
+            <div class="col-md-4">
+                <div style="border-style: ridge;">상품 별점</div>
+                <div style="border-style: ridge;">상품 리뷰</div>
+            </div>
+        </div>
     </div>
 </div>
 {%endblock%}
