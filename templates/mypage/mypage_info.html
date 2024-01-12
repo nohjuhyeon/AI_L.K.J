@@ -4,4 +4,33 @@
 
 {% block main_container %}
 개인 정보 수정
+
+<div class="row" style="margin-top: 10%; margin-bottom: 10%;">
+    <div class="col-4" >
+        <form>
+            <div>
+                <h3>마이페이지</h3>
+            </div>
+            <div>
+                <button class="col-8 themed-grid-col btn btn-primary" style="font-size: 15px" formaction="/mypage/info" method="">-개인정보수정</button>
+            </div>
+            <div>
+                <button class="col-8 themed-grid-col btn btn-primary" style="font-size: 15px" formaction="/mypage/insert_plan" method="">-나의 여행지 관리</button>
+            </div>
+            <div>
+                <button class="col-8 themed-grid-col btn btn-primary" style="font-size: 15px" formaction="/mypage/plan_list" method="">-내가 찜한 목록</button>
+            </div>
+            <div>
+                <button class="col-8 themed-grid-col btn btn-primary" style="font-size: 15px" formaction="" method="">-예약내역</button>
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="col-8">
+        <h2>개인정보수정</h2>
+    </div>
+</div>
+
 {% endblock %}
