@@ -3,5 +3,52 @@
 
 
 {% block main_container %}
-회원가입
+
+
+<div class="row">
+    <h2>#개인정보내역</h1>
+    <div class="col-8">
+        <form>
+            <br>
+            <br>
+            <div class="col-12">
+            <label for="email" class="form-label col">Email</label>
+            
+                <input type="text" class="form-control col-10" id="email" placeholder="example@example.com" value="" required="">
+                <button class="btn btn-primary col-1">확인</button>
+            </div>
+            
+            
+
+            <label for="password" class="form-label">비밀번호</label>
+            <input type="text" class="form-control" id="password" placeholder="" value="" required="">
+
+            <label for="password_check" class="form-label">비밀번호 확인</label>
+            <input type="text" class="form-control" id="password_check" placeholder="" value="" required="">
+
+            <label for="yymmdd" class="form-label">생년월일</label>
+            <input type="text" class="form-control" id="yymmdd" placeholder="" value="" required="">
+
+            <label for="phone" class="form-label">휴대전화번호</label>
+            <input type="text" class="form-control" id="phone" placeholder="" value="" required="">
+
+            <label for="address" class="form-label">주소</label>
+            <input type="text" class="form-control" id="address" placeholder="" value="" required="">
+            <input type="text" class="form-control" id="address_detail" placeholder="" value="" required="">
+        </form>
+    </div>
+
+    <div class="col-4">
+        <br>
+        <br>
+        <img src="" alt="회원가입 사진">
+        <div><button class="btn btn-primary">첨부하기</button></div>
+    </div>
+
+    <div class="col-4 justify-content-right">
+        <button class="btn btn-primary">회원가입</button>
+    </div>
+
+</div>
+
 {% endblock %}
