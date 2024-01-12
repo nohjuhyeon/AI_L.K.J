@@ -1,53 +1,152 @@
 {% extends "template.html"%}
 {%block main_container%}
-<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px; height: 500px;">
-    <a href=""
-        class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
-        <svg class="bi pe-none me-2" width="30" height="24">
-            <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-5 fw-semibold">여행</span>
-    </a>
-    <div class="list-group list-group-flush border-bottom scrollarea">
-        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-            <div class="w-100 align-items-center justify-content-between">
-                <strong>1일차</strong>
-                <ol>
-                    <li class="row justify-content-between">
-                        <input type="text" class="col-md-7 form-control form-control-sm" placeholder="첫번째 일정"
-                            value="첫번째 일정">
-                        <div class="col-md-4 ">
-                            <button class="btn btn-primary rounded-pill trip_plan_button"
-                                type="submit">수정</button>
-                            <button class="btn btn-primary rounded-pill trip_plan_button"
-                                type="submit">삭제</button>
+<div class="row justify-content-between">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary col-md-auto"
+        style="width: 380px; height: 500px;">
+        <a href=""
+            class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+            <svg class="bi pe-none me-2" width="30" height="24">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-5 fw-semibold">여행</span>
+        </a>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="scrollable-box">
+                        <div class="list-group list-group-flush border-bottom scrollarea">
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                                <div class="row justify-content-between">
+                                    <div class="col-md-8">
+                                        <h3>1일차</h3>
+                                    </div>
+                                    <div class="col-md-4 row justify-content-end">
+                                        <button class="btn btn-primary trip_plan_button col-md-8"
+                                            type="submit">추가</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                                <div class="row justify-content-between">
+                                    <div class="col-md-8">
+                                        <h3>2일차</h3>
+                                    </div>
+                                    <div class="col-md-4 row justify-content-end">
+                                        <button class="btn btn-primary trip_plan_button col-md-8"
+                                            type="submit">추가</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                                <div class="row justify-content-between">
+                                    <div class="col-md-8">
+                                        <h3>3일차</h3>
+                                    </div>
+                                    <div class="col-md-4 row justify-content-end">
+                                        <button class="btn btn-primary trip_plan_button col-md-8"
+                                            type="submit">추가</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between trip_plan_list">
+                                    <input type="text" class="col-md-8 form-control form-control-sm"
+                                        placeholder="첫번째 일정" value="첫번째 일정">
+                                    <div class="col-md-5 row">
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">수정</button>
+                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                            type="submit">삭제</button>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
-                    </li>
-                    <li>두번째 일정</li>
-                    <li>세번째 일정</li>
-                </ol>
+                    </div>
+                </div>
             </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-            <div class="w-100 align-items-center justify-content-between">
-                <strong>2일차</strong>
-                <ol>
-                    <li>첫번째 일정</li>
-                    <li>두번째 일정</li>
-                    <li>세번째 일정</li>
-                </ol>
-            </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-            <div class="w-100 align-items-center justify-content-between">
-                <strong>3일차</strong>
-                <ol>
-                    <li>첫번째 일정</li>
-                    <li>두번째 일정</li>
-                    <li>세번째 일정</li>
-                </ol>
-            </div>
-        </a>
+        </div>
+    </div>
+    <div class="flex-column col-md-auto">
+        <img src="..\images\ID_photo.png" alt="회원가입 사진">
     </div>
 </div>
 {%endblock%}

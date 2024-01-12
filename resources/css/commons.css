@@ -2,3 +2,12 @@
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
 }
+
+.trip_plan_list {
+    margin-top: 10px;
+}
+
+.scrollable-box {
+  max-height: 400px;
+  overflow-y: scroll;
+}
