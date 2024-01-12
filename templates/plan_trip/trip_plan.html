@@ -1,8 +1,8 @@
 {% extends "template.html"%}
 {%block main_container%}
-<div class="row justify-content-between">
+<div class="container row justify-content-between">
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary col-md-auto"
-        style="width: 380px; height: 500px;">
+        style="width: 40%; height: 100%;">
         <a href=""
             class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
             <svg class="bi pe-none me-2" width="30" height="24">
@@ -13,9 +13,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="scrollable-box">
+                    <div class="scrollable-box-list">
                         <div class="list-group list-group-flush border-bottom scrollarea">
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm list-group">
                                 <div class="row justify-content-between">
                                     <div class="col-md-8">
                                         <h3>1일차</h3>
@@ -25,38 +25,35 @@
                                             type="submit">추가</button>
                                     </div>
                                 </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="첫번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="두번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="세번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
+                                </a>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm list-group">
                                 <div class="row justify-content-between">
                                     <div class="col-md-8">
                                         <h3>2일차</h3>
@@ -66,38 +63,35 @@
                                             type="submit">추가</button>
                                     </div>
                                 </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="첫번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="두번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="세번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
+                                </a>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm list-group">
                                 <div class="row justify-content-between">
                                     <div class="col-md-8">
                                         <h3>3일차</h3>
@@ -107,46 +101,94 @@
                                             type="submit">추가</button>
                                     </div>
                                 </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="첫번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="두번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
-                                <div class="row justify-content-between trip_plan_list">
-                                    <input type="text" class="col-md-8 form-control form-control-sm"
-                                        placeholder="첫번째 일정" value="첫번째 일정">
-                                    <div class="col-md-5 row">
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
-                                            type="submit">수정</button>
-                                        <button class="btn btn-primary trip_plan_button col-md-6"
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                    aria-current="true">
+                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                        <input type="text" class="col-md-8 form-control form-control-sm"
+                                            placeholder="세번째 일정" value="">
+                                        <button class="btn btn-primary trip_plan_button col-md-2"
                                             type="submit">삭제</button>
                                     </div>
-                                </div>
+                                </a>
                             </a>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex-column col-md-auto">
-        <img src="..\images\ID_photo.png" alt="회원가입 사진">
+    <div class="flex-column col-md-auto" style="width: 60%;">
+        <img style="width: 100%; height: 100%;" src="..\images\map.png" alt="회원가입 사진">
+    </div>
+</div>
+<hr>
+<form class="d-flex mt-3 mt-lg-0" role="search">
+    <input class="form-control me-2" type="search" placeholder="ex) 1일차 여행지 검색해줘" aria-label="Search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+<div class="scrollable-box-search">
+    <div class="list-group list-group-flush border-bottom scrollarea">
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0">첫번째 추천</h6>
+                    <p class="mb-0 opacity-75">밥이 맛있어요</p>
+                </div>
+                <button class="btn btn-primary button-sm" type="submit">추가</button>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0">두번째 추천</h6>
+                    <p class="mb-0 opacity-75">집이 좋아요</p>
+                </div>
+                <button class="btn btn-primary button-sm" type="submit">추가</button>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0">세번째 추천</h6>
+                    <p class="mb-0 opacity-75">모든 게 좋아요</p>
+                </div>
+                <button class="btn btn-primary button-sm" type="submit">추가</button>
+            </div>
+        </a> <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0">네번째 추천</h6>
+                    <p class="mb-0 opacity-75">없는 게 없어요</p>
+                </div>
+                <button class="btn btn-primary button-sm" type="submit">추가</button>
+            </div>
+        </a>
     </div>
 </div>
 {%endblock%}
