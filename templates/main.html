@@ -11,10 +11,10 @@
         <div class="row justify-content-center" style="text-align: center;margin-top: 10px; margin-bottom: 10px;">AI가
             만들어주는 나만의 여행 계획</div>
         <form class="row justify-content-center" style="margin-top: 10px; margin-bottom: 10px;"
-            action="/plan_trip/reco_trip_plan" method="GET">
+            action="/plan_trip/reserve_transfer" method="GET">
             <div class="col-md-2">
-                <select class="form-select" id="transfer" required>
-                    <option value="" disabled selected style="display: none;">교통수단선택</option>
+                <select class="form-select" name="transfer" required>
+                    <option value="" disabled selected style="display: none;">교통수단</option>
                     <option value="entire">전체</option>
                     <option value="train">기차</option>
                     <option value="plane">항공</option>
@@ -25,28 +25,56 @@
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text">출발지</span>
-                    <input type="text" class="form-control" name="depart">
+                    <input type="text" class="form-control" name="depart" required="">
+                    <div class="invalid-feedback">
+                        Name on card is required
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text">목적지</span>
-                    <input type="text" class="form-control" name="arrive">
+                    <input type="text" class="form-control" name="arrive" required="">
+                    <div class="invalid-feedback">
+                        Name on card is required
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="input-group">
-                    <span class="input-group-text">인원</span>
-                    <input type="text" class="form-control" name="transfer_mem">
+                    <select class="form-select" name="transfer_mem" required>
+                        <option value="" disabled selected style="display: none;">인원</option>
+                        <option value=1>1명</option>
+                        <option value=2>2명</option>
+                        <option value=3>3명</option>
+                        <option value=4>4명</option>
+                        <option value=5>5명</option>
+                        <option value=0>6명 +</option>
+
+                    </select>
                 </div>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-primary" type="submit">찾기</button>
             </div>
-        </form>
+            <hr>
+            <div class="input-group col-md-3">
+                <span class="input-group-text">출발날짜</span>
+                <input type="text" class="form-control" name="depart_date" required="">
+                <div id="error" class="invalid-feedback">
+                    Name on card is required
+                </div>
+            </div>
+            <div class="input-group col-md-3">
+                <span class="input-group-text">도착날짜</span>
+                <input type="text" class="form-control" name="arrive_date" required="">
+                <div class="invalid-feedback">
+                    Name on card is required
+                </div>
+            </div>
     </div>
-    <div class="col-md-3"></div>
 </div>
+</form>
 <!-- Carousel -->
 <div class="row">
     <div class="col-md-1"></div>
@@ -87,7 +115,12 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-                <h6 class="border-bottom pb-2 mb-0"> O월의 베스트 3 여행지</h6>
+                <div class="row border-bottom pb-2 mb-0 justify-content-between">
+                    <h6 class="col-md-auto"> O월의 베스트 3 여행지</h6>
+                    <small class="col-md-auto d-block text-end  pb-2 mb-0">
+                        <a href="/event/best_region" class="link">전체 보기</a>
+                    </small>
+                </div>
                 <div class="d-flex text-body-secondary pt-3">
                     <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
@@ -127,9 +160,6 @@
                         역사와 문화가 공존하는 도시로, 아름다운 왕궁과 예술의 보고, 그리고 놀라운 음식과 열정적인 축제를 경험할 수 있는 멋진 여행지
                     </p>
                 </div>
-                <small class="d-block text-end mt-3">
-                    <a href="/event/best_region" class="link">전체 보기</a>
-                </small>
             </div>
         </div>
         <div class="col-md-1"></div>
@@ -138,7 +168,13 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-                <h6 class="border-bottom pb-2 mb-0"> O월의 베스트 3 숙소</h6>
+                <div class="row border-bottom pb-2 mb-0 justify-content-between">
+                    <h6 class="col-md-auto"> O월의 베스트 3 숙소</h6>
+                    <small class="col-md-auto d-block text-end  pb-2 mb-0">
+                        <a href="/event/best_dorm" class="link">전체 보기</a>
+                    </small>
+
+                </div>
                 <div class="d-flex text-body-secondary pt-3">
                     <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
@@ -178,12 +214,13 @@
                         고급스러운 분위기와 우아한 객실, 탁월한 서비스로 유명한 호텔로, 편안하고 품격 있는 숙박
                     </p>
                 </div>
-                <small class="d-block text-end mt-3">
-                    <a href="/event/best_region" class="/event/best_dorm">전체 보기</a>
-                </small>
             </div>
         </div>
         <div class="col-md-1"></div>
     </div>
+</div>
+</div>
+<div class="col-md-3"></div>
+</div>
 
-    {% endblock %}
+{% endblock %}

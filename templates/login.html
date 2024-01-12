@@ -5,49 +5,32 @@
 {% block main_container %}
 
 <form>
-    <img class="mb-4" src="" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">로그인</h1>
-    <!-- <div class="row">
-        <div class="col-1">
-            <div class="row">ID</div>
-            <div class="row">PW</div>
-        </div>
-        <div class="col-6">
-            <div class="form-floating col-6">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">example@example.com</label>
-            </div>
-            <div class="form-floating col-6">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">**********</label>
-            </div>
-        </div> -->
-
-    <!-- </div> -->
-
- 
-
+    <img class="mb-4" src="" alt="로고" width="72" height="57">
+    <h1 class="row justify-content-center h3 mb-3 fw-normal ">로그인</h1>
+    <br>
     <div class="row mb-3 text-center">
         <div class="col-md-3 themed-grid-col">
             <div class="row">
-                <input type="text" readonly class="form-control-plaintext" value="아이디">
-                <input type="text" readonly class="form-control-plaintext" value="비밀번호">
+                <input type="text" style="font-size: 20px; padding: 3px" readonly class="form-control-plaintext text-end" value="ID">
+                <input type="text" style="font-size: 20px; padding: 3px" readonly class="form-control-plaintext text-end" value="PW">
             </div>
         </div>
         <div class="col-md-6 themed-grid-col">
             <div class="row">
-                <input type="email" class="form-control col-8" id="floatingInput" placeholder="name@example.com">
-                <input type="password" class="form-control col-8" id="floatingPassword" placeholder="Password">
+                <input type="email" class="form-control col-12" id="floatingInput" placeholder="name@example.com">
+                <input type="password" class="form-control col-12" id="floatingPassword" placeholder="Password">
             </div>
         </div>
-        <!-- <div class="row-2 col-md-2 themed-grid-col">
-            <button class="col-md-4 themed-grid-col">로그인</button>
-        </div> -->
         <div class="col-md-2 themed-grid-col">
-            <button class="col-md-4 themed-grid-col" style="font-size: 20px; padding: 20px; width: 200px">로그인</button>
+            <button class="col-md-12 themed-grid-col btn btn-primary" style="font-size: 20px; padding: 20px; width: 200px">Login</button>
         </div>
+    <br>    
+    <div>
+        <button class="col-md-3 themed-grid-col btn btn-light" style="font-size: 15px">ID/PW 찾기</button>
+        <button class="col-md-3 themed-grid-col btn btn-light" style="font-size: 15px">회원가입</button>
+    </div>
     </div>
     <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
 </form>
 
-{% endblock %}
+{% endblock %}  
