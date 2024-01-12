@@ -16,3 +16,11 @@
     max-height: 220px;
     overflow-y: scroll;
   }
+
+  .custom-list-group {
+    font-size: 30px;
+  }
+
+  .community-content {
+    margin: 5px;
+  }
