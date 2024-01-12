@@ -7,7 +7,12 @@
     margin-top: 10px;
 }
 
-.scrollable-box {
+.scrollable-box-list {
   max-height: 400px;
   overflow-y: scroll;
 }
+
+.scrollable-box-search {
+    max-height: 220px;
+    overflow-y: scroll;
+  }

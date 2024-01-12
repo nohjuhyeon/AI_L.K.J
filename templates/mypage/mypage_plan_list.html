@@ -3,5 +3,31 @@
 
 
 {% block main_container %}
-내가 찜한 목록
+<div class="row" style="margin-top: 10%; margin-bottom: 10%;">
+        <div class="col-4">
+
+        <h3 style="margin: 20px;">마이페이지</h3>
+
+        <form class="row justify-contentt-start" style="margin-left: 10px; margin-top: 50px;">
+            <div>
+                <button class="col-9 themed-grid-col btn btn-light" style="font-size: 15px; margin: 10px;"
+                    formaction="/mypage/info" method="">-개인정보수정</button>
+            </div>
+            <div>
+                <button class="col-9 themed-grid-col btn btn-light" style="font-size: 15px; margin: 10px;"
+                    formaction="/mypage/insert_plan" method="">-나의 여행지 관리</button>
+            </div>
+            <div>
+                <button class="col-9 themed-grid-col btn btn-light" style="font-size: 15px; margin: 10px;"
+                    formaction="/mypage/plan_list" method="">-내가 찜한 목록</button>
+            </div>
+            <div>
+                <button class="col-9 themed-grid-col btn btn-light" style="font-size: 15px; margin: 10px;"
+                    formaction="" method="">-예약내역</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
 {% endblock %}
