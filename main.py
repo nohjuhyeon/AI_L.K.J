@@ -85,6 +85,28 @@ async def login_get(request:Request):
 #     print(dict(await request.form()))
 #     return templates.TemplateResponse(name="users/list.html", context={'request':request})
 
+@app.post("/login_check")
+async def login_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    user_list = await collection_user_list.get_all()
+    print(user_list)
+    email_list = []
+    password_list = []
+    for i in range(len(user_list)):
+        email_list.append(user_list[i].user_email)
+        password_list.append(user_list[i].user_password)
+    if dict(await request.form())["login_email"] in email_list: 
+        if password_list[email_list.index(dict(await request.form())["login_email"])] == dict(await request.form())["login_password"]:
+            link = "login_complete.html"
+        else:
+            link = "login_fail.html"
+    else:
+        link = "login_fail.html"
+    print(email_list)
+    pass
+    return templates.TemplateResponse(name=link, context={'request':request})
+
 # @app.get("/login_insert")                     
 # async def login_insert_get(request:Request):
 #     print(dict(request._query_params))
