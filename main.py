@@ -1,12 +1,12 @@
 from fastapi import FastAPI               
 app = FastAPI()
 
-# from databases.connections import Settings
+from databases.connections import Settings
 
-# settings = Settings()
-# @app.on_event("startup")
-# async def init_db():
-#     await settings.initialize_database()
+settings = Settings()
+@app.on_event("startup")
+async def init_db():
+    await settings.initialize_database()
 
 
 from routes.admin import router as admin_router                   
@@ -23,6 +23,12 @@ app.include_router(event_router, prefix="/event")
 
 from fastapi import Request                                
 from fastapi.templating import Jinja2Templates              
+from databases.connections import Database
+
+from models.user_list import User_list # 컬랙션을 연결하고, 컬렉션에 저장/불러오기 하는 방법 
+
+collection_user_list = Database(User_list)
+
 
 from fastapi.middleware.cors import CORSMiddleware             
 app.add_middleware(
@@ -40,38 +46,81 @@ app.mount("/images", StaticFiles(directory="resources/images/"), name="static_im
 templates = Jinja2Templates(directory="templates/")    
 
 @app.get("/")                     
-async def root(Request:Request):
-    return templates.TemplateResponse("main.html",{'request':Request})
+async def main_get(request:Request):
+    print(dict(request._query_params))
+    return templates.TemplateResponse("main.html",{'request':request})
 
 
 @app.post("/")                      
-async def root(Request:Request):
-    return templates.TemplateResponse("main.html",{'request':Request})
+async def main_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    return templates.TemplateResponse("main.html",{'request':request})
+
 
 @app.get("/login")                     
-async def root(Request:Request):
-    return templates.TemplateResponse("login.html",{'request':Request})
+async def login_get(request:Request):
+    print(dict(request._query_params))
+    user_list = await collection_user_list.get_all()
+    print(user_list)
+    list_user_id = []
+    list_user_email = []
+    list_user_pswd = []
+    for i in range(len(user_list)):
+        list_user_id.append(dict(user_list[i])["id"])
+        list_user_email.append(dict(user_list[i])["user_email"])
+        list_user_pswd.append(dict(user_list[i])["user_password"])
+    print(list_user_id)
+    print(list_user_email)
+    print(list_user_pswd)
+    pass
+    return templates.TemplateResponse("login.html",{'request':request,
+                                                    'user_id':list_user_id,
+                                                    'user_email': list_user_email,
+                                                    'user_pswd': list_user_pswd})
 
+# @app.post("/login")
+# async def login_post(request:Request):
+#     await request.form()
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="users/list.html", context={'request':request})
 
-@app.post("/login")                      
-async def root(Request:Request):
-    return templates.TemplateResponse("login.html",{'request':Request})
+# @app.get("/login_insert")                     
+# async def login_insert_get(request:Request):
+#     print(dict(request._query_params))
+#     return templates.TemplateResponse("login.html",{'request':request})
+
+@app.post("/login_insert")                      
+async def login_insert_post(request:Request):
+    user_dict = dict(await request.form())
+    print(dict(await request.form()))
+    pass    
+    user = User_list(**user_dict)
+    await collection_user_list.save(user)
+
+    return templates.TemplateResponse("login.html",{'request':request})
 
 @app.get("/community")                     
-async def root(Request:Request):
-    return templates.TemplateResponse("community.html",{'request':Request})
+async def community_get(request:Request):
+    print(dict(request._query_params))
+    return templates.TemplateResponse("community.html",{'request':request})
 
 
 @app.post("/community")                      
-async def root(Request:Request):
-    return templates.TemplateResponse("community.html",{'request':Request})
+async def community_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    return templates.TemplateResponse("community.html",{'request':request})
 
 @app.get("/insert")                     
-async def root(Request:Request):
-    return templates.TemplateResponse("insert.html",{'request':Request})
+async def insert_get(request:Request):
+    print(dict(request._query_params))
+    return templates.TemplateResponse("insert.html",{'request':request})
 
 
 @app.post("/insert")                      
-async def root(Request:Request):
-    return templates.TemplateResponse("insert.html",{'request':Request})
+async def insert_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    return templates.TemplateResponse("insert.html",{'request':request})
 
