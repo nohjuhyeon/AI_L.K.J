@@ -45,11 +45,11 @@ app.mount("/images", StaticFiles(directory="resources/images/"), name="static_im
 
 templates = Jinja2Templates(directory="templates/")    
 
+# 메인 페이지로 이동
 @app.get("/")                     
 async def main_get(request:Request):
     print(dict(request._query_params))
     return templates.TemplateResponse("main.html",{'request':request})
-
 
 @app.post("/")                      
 async def main_post(request:Request):
@@ -57,7 +57,7 @@ async def main_post(request:Request):
     print(dict(await request.form()))
     return templates.TemplateResponse("main.html",{'request':request})
 
-
+# 로그인 페이지로 이동
 @app.get("/login")                     
 async def login_get(request:Request):
     print(dict(request._query_params))
@@ -85,6 +85,8 @@ async def login_get(request:Request):
 #     print(dict(await request.form()))
 #     return templates.TemplateResponse(name="users/list.html", context={'request':request})
 
+
+# 로그인 확인 페이지로 이동
 @app.post("/login_check")
 async def login_post(request:Request):
     await request.form()
@@ -96,22 +98,28 @@ async def login_post(request:Request):
     for i in range(len(user_list)):
         email_list.append(user_list[i].user_email)
         password_list.append(user_list[i].user_password)
+    print(email_list)
     if dict(await request.form())["login_email"] in email_list: 
-        if password_list[email_list.index(dict(await request.form())["login_email"])] == dict(await request.form())["login_password"]:
+        user_index = email_list.index(dict(await request.form())["login_email"])
+        if password_list[user_index] == dict(await request.form())["login_password"]:
             link = "login_complete.html"
+            user_dict = user_list[user_index]
+            return templates.TemplateResponse(name=link, context={'request':request,
+                                                                  'user_dict' : user_dict})
         else:
             link = "login_fail.html"
+            return templates.TemplateResponse(name=link, context={'request':request})
+
     else:
         link = "login_fail.html"
-    print(email_list)
-    pass
-    return templates.TemplateResponse(name=link, context={'request':request})
+        return templates.TemplateResponse(name=link, context={'request':request})
 
 # @app.get("/login_insert")                     
 # async def login_insert_get(request:Request):
 #     print(dict(request._query_params))
 #     return templates.TemplateResponse("login.html",{'request':request})
 
+# 회원가입 완료시 
 @app.post("/login_insert")                      
 async def login_insert_post(request:Request):
     user_dict = dict(await request.form())
@@ -122,6 +130,7 @@ async def login_insert_post(request:Request):
 
     return templates.TemplateResponse("login.html",{'request':request})
 
+# 커뮤니티 페이지로 이동
 @app.get("/community")                     
 async def community_get(request:Request):
     print(dict(request._query_params))
