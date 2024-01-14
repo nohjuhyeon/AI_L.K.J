@@ -125,11 +125,24 @@ async def login_post(request:Request):
 async def login_insert_post(request:Request):
     user_dict = dict(await request.form())
     print(dict(await request.form()))
-    pass    
-    user = User_list(**user_dict)
-    await collection_user_list.save(user)
-
-    return templates.TemplateResponse("login.html",{'request':request})
+    user_list = await collection_user_list.get_all()
+    list_user_email = []
+    list_user_name = []
+    for i in range(len(user_list)):
+        list_user_email.append(dict(user_list[i])["user_email"])
+        list_user_name.append(dict(user_list[i])["user_name"])
+    pass
+    if user_dict["user_email"] in list_user_email :     
+        return templates.TemplateResponse("insert_email_error.html",{'request':request})
+    elif user_dict["user_password"] != user_dict["password_check"]:
+        return templates.TemplateResponse("insert_password_error.html",{'request':request})
+    elif user_dict["user_name"] in list_user_name:
+        return templates.TemplateResponse("insert_name_error.html",{'request':request})
+        
+    else:
+        user = User_list(**user_dict)
+        await collection_user_list.save(user)
+        return templates.TemplateResponse("login.html",{'request':request})
 
 # 커뮤니티 페이지로 이동
 @app.get("/community")                     
