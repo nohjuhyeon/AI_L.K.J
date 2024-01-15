@@ -66,6 +66,18 @@ async def list_post(request:Request):
     print(dict(await request.form()))
     return templates.TemplateResponse(name="mypage/mypage_plan_list.html", context={'request':request})
 
+@router.post("/reserve_list") # 펑션 호출 방식
+async def list_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    return templates.TemplateResponse(name="mypage/mypage_reserve_list.html", context={'request':request})
+
+@router.get("/reserve_list") # 펑션 호출 방식
+async def list_post(request:Request):
+    await request.form()
+    print(dict(await request.form()))
+    return templates.TemplateResponse(name="mypage/mypage_reserve_list.html", context={'request':request})
+
 @router.get("/{object_id}")                     
 async def login_main_get(request:Request, object_id:PydanticObjectId):
     print(dict(request._query_params))
