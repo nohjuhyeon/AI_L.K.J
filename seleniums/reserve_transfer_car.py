@@ -55,6 +55,7 @@ element_list = browser.find_elements(by=By.CSS_SELECTOR,value="#map-parent > sec
 for element_one in element_list:
     car_name = element_one.find_element(by=By.CSS_SELECTOR,value="dl > dd > div.title-box")
     print(car_name.text)
+    pass
     image_tag = element_one.find_element(by=By.CSS_SELECTOR, value = 'li> dl > dt > div > img')
     car_image= image_tag.get_attribute('src')
     print(car_image)

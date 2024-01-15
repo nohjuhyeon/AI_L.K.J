@@ -64,7 +64,8 @@ async def list_post(request:Request):
     car_list = await collection_transfer_car_list.get_all()
     print(car_list)
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request,
+                                                                                           'car_list':car_list})
 
 @router.get("/reserve_transfer_car") # 펑션 호출 방식
 async def list_post(request:Request):
@@ -72,7 +73,8 @@ async def list_post(request:Request):
     car_list = await collection_transfer_car_list.get_all()
     print(car_list)
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request,
+                                                                                           'car_list':car_list})
 
 ## 숙소 예약
 @router.post("/reserve_dorm") # 펑션 호출 방식

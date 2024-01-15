@@ -64,7 +64,7 @@ while True :
    
     for x in range(element_depart_list):
         element_depart_list[x].click()                 # 출발지 리스트 하나씩 클릭
-
+        
         element_arrive.click    # 도착지 클릭
         for y in range(element_arrive_list):
             element_arrive_list[y].click()      # 도착지 리스트 하나씩 클릭
