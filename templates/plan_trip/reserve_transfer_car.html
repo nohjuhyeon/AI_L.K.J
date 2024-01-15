@@ -10,7 +10,7 @@
         class="btn btn-info rounded-pill px-3" type="button"><a href="">고속버스</a></button>
     <button class="btn btn-success rounded-pill px-3" type="button"><a href="http://www.letskorail.com">기차</a></button>
     <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">항공</a></button>
-    <button class="btn btn-warning rounded-pill px-3" type="button"><a href="">렌트카</a></button>
+    <button class="btn btn-warning rounded-pill px-3" type="button"><a href="/plan_trip/reserve_transfer_car">렌트카</a></button>
 </div>
 
 <div>
@@ -82,9 +82,11 @@
         </div>
     </div>
 </div>
+{%for dict_car in car_list%}
 <div class="row">
     <div class="col-md-3" style="border-style: ridge;">
-        <img src="그림 이미지 넣을예정" alt="Tour Image">
+        <img src={{dict_car.car_image}} alt="Tour Image" style="width: 100%;">
+        
     </div>
     <div class="col-md-9" style="border-style: ridge;">
         <div class="rentcar_date_info">
@@ -108,4 +110,5 @@
         </div>
     </div>
 </div>
+{%endfor%}
 {%endblock%}

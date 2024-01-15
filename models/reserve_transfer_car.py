@@ -4,15 +4,13 @@ from beanie import Document, Link                   # 데이터베이스의 데�
 # from pydantic import BaseModel, EmailStr
 
 # 개발자 실수로 들어가는 field 제한
-class User_list(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
-    user_email: Optional[str] = None
-    user_password: Optional[str] = None
-    user_name: Optional[str] = None    
-    user_birth : Optional[str] = None
-    user_phone_number : Optional[str] = None
-    user_address : Optional[str] = None
+class transfer_car_list(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
+    car_name: Optional[str] = None
+    car_image: Optional[str] = None
+    store_name: Optional[str] = None    
+    car_price : Optional[str] = None
     class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
-        name = "user_list" # collection의 이름
+        name = "reserve_transfer_car" # collection의 이름
   
   # beanie는 mongoDB를 비동기적으로 다루기 위한 라이브러리
         

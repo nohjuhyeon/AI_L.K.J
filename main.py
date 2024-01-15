@@ -27,8 +27,9 @@ from fastapi.templating import Jinja2Templates
 from databases.connections import Database
 
 from models.user_list import User_list # 컬랙션을 연결하고, 컬렉션에 저장/불러오기 하는 방법 
-
 collection_user_list = Database(User_list)
+from models.reserve_transfer_car import transfer_car_list
+collection_transfer_car_list = Database(transfer_car_list)
 
 
 from fastapi.middleware.cors import CORSMiddleware             
