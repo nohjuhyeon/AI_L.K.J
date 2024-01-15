@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from starlette.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
-
+from utils.paginations import Paginations
 
 router = APIRouter()
 
@@ -67,14 +67,22 @@ async def list_post(request:Request):
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request,
                                                                                            'car_list':car_list})
 
+from typing import Optional
+@router.get("/reserve_transfer_car/{page_number}") # 펑션 호출 방식
 @router.get("/reserve_transfer_car") # 펑션 호출 방식
-async def list_post(request:Request):
+async def list_post(request:Request, page_number: Optional[int]=1):
     await request.form()
     car_list = await collection_transfer_car_list.get_all()
+    total = len(car_list)
+    conditions = { }
     print(car_list)
     print(dict(await request.form()))
+    pagination = Paginations(total,page_number)
+    car_list_pagination, pagination = await collection_transfer_car_list.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request,
-                                                                                           'car_list':car_list})
+                                                                                           'car_list':car_list_pagination,
+                                                                                           'pagination':pagination})
 
 ## 숙소 예약
 @router.post("/reserve_dorm") # 펑션 호출 방식

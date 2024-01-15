@@ -59,16 +59,22 @@ for element_one in element_list:
     image_tag = element_one.find_element(by=By.CSS_SELECTOR, value = 'li> dl > dt > div > img')
     car_image= image_tag.get_attribute('src')
     print(car_image)
-    store_list = element_one.find_elements(by=By.CSS_SELECTOR,value=".list-store")
+    try:
+        more_button = element_one.find_element(by=By.CSS_SELECTOR,value="div.btn-more-box > a")
+        more_button.click()
+    except:
+        pass
+    store_list = element_one.find_elements(by=By.CSS_SELECTOR,value=".list-store > li")
     for element_store in store_list:
-        store_name = element_store.find_element(by=By.CSS_SELECTOR,value="li > a > dl > dt > div > strong")
-        car_price = element_store.find_element(by=By.CSS_SELECTOR,value=" li > a > dl > dd > div > div > p")   
+        store_name = element_store.find_element(by=By.CSS_SELECTOR,value="a > dl > dt > div > strong")
+        car_price = element_store.find_element(by=By.CSS_SELECTOR,value=" a > dl > dd > div > div > p")   
         print(store_name.text)
         print(car_price.text)
         collection.insert_one({"car_name": car_name.text,
                                "car_image": car_image,
                                "store_name" : store_name.text,
                                "car_price": car_price.text})
+        pass
 
 browser.quit()                                      # - 브라우저 종료
 
