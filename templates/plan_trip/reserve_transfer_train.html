@@ -31,26 +31,26 @@
         </select></div>
 </div>
 <form>
-    {%for dict_car in car_list%}
+    {%for dict_train in train_list%}
     <div class="row">
         <div class="col-md-3" style="border-style: ridge;">
-            <img src={{dict_car.car_image}} alt="Tour Image" style="width: 100%;">
+            <img src="\images\korail.png" alt="Tour Image" style="width: 100%;">
 
         </div>
         <div class="col-md-9" style="border-style: ridge;">
             <div class="row justify-content-between">
                 <div class="rentcar_date_info col-md-6">
-                    <h1>{{dict_car.store_name}}</h1>
+                    <h1>코레일</h1>
                 </div>
                 <div class="rentcar_price_info col-md-3">
-                    <em style="font-size:x-large;">{{dict_car.car_price}}</em>
+                    <div style="border-style: ridge;">{{dict_train.train_category}}</div>
+                    <div style="border-style: ridge;">상품 리뷰</div>
                 </div>
             </div>
             <div class="row justify-content-between">
-                <h3 class="col-md-4" style="border-style: ridge;">{{dict_car.car_name}}</h3>
+                <h3 class="col-md-4" style="border-style: ridge;">{{dict_train.train_category}}</h3>
                 <div class="col-md-4">
-                    <div style="border-style: ridge;">상품 별점</div>
-                    <div style="border-style: ridge;">상품 리뷰</div>
+                    <em style="font-size:x-large;">{{dict_train.train_number}}</em>
                 </div>
             </div>
         </div>

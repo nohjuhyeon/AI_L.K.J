@@ -1,7 +1,7 @@
 from typing import Any, List, Optional
 from beanie import init_beanie, PydanticObjectId
 from models.user_list import User_list
-from models.reserve_transfer_car import transfer_car_list
+from models.reserve_transfer_car import transfer_car_list, transfer_train_list
 from motor.motor_asyncio import AsyncIOMotorClient 
 from pydantic_settings import BaseSettings 
 from utils.paginations import Paginations
@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     async def initialize_database(self):                                         
         client = AsyncIOMotorClient(self.DATABASE_URL)                             
         await init_beanie(database=client.get_default_database(),                  
-                          document_models=[User_list,transfer_car_list])
+                          document_models=[User_list,transfer_car_list, transfer_train_list])
 
         
     class Config:

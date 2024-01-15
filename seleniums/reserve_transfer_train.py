@@ -106,12 +106,12 @@ for row_num in range(1, 21):
 
     # 추출한 데이터를 MongoDB에 삽입
     train_info = {
-        "Category": category_cell,
-        "Number": train_cell,
-        "Departure": departure_location,
-        "Departure time": departure_time,
-        "Arrival": arrival_location,
-        "Arrival time": arrival_time
+        "train_category": category_cell,
+        "train_number": train_cell,
+        "train_departure": departure_location,
+        "train_departure_time": departure_time,
+        "train_arrival": arrival_location,
+        "train_arrival_time": arrival_time
     }
     collection.insert_one(train_info)
 
@@ -160,12 +160,12 @@ while True:
 
         # 추출한 데이터를 MongoDB에 삽입
         train_info = {
-            "Category": category_cell,
-            "Number": train_cell,
-            "Departure": departure_location,
-            "Departure time": departure_time,
-            "Arrival": arrival_location,
-            "Arrival time": arrival_time
+            "train_category": category_cell,
+            "train_number": train_cell,
+            "train_departure": departure_location,
+            "train_departure_time": departure_time,
+            "train_arrival": arrival_location,
+            "train_arrival_time": arrival_time
         }
         collection.insert_one(train_info)
     try:    
@@ -221,12 +221,12 @@ for row_num in range(1, 21):
 
     # 추출한 데이터를 MongoDB에 삽입
     train_info = {
-        "Category": category_cell,
-        "Number": train_cell,
-        "Departure": departure_location,
-        "Departure time": departure_time,
-        "Arrival": arrival_location,
-        "Arrival time": arrival_time
+            "train_category": category_cell,
+            "train_number": train_cell,
+            "train_departure": departure_location,
+            "train_departure_time": departure_time,
+            "train_arrival": arrival_location,
+            "train_arrival_time": arrival_time
     }
     collection.insert_one(train_info)
 
@@ -275,12 +275,12 @@ while True:
 
         # 추출한 데이터를 MongoDB에 삽입
         train_info = {
-            "Category": category_cell,
-            "Number": train_cell,
-            "Departure": departure_location,
-            "Departure time": departure_time,
-            "Arrival": arrival_location,
-            "Arrival time": arrival_time
+            "train_category": category_cell,
+            "train_number": train_cell,
+            "train_departure": departure_location,
+            "train_departure_time": departure_time,
+            "train_arrival": arrival_location,
+            "train_arrival_time": arrival_time
         }
         collection.insert_one(train_info)
     try:    
