@@ -1,6 +1,6 @@
 ## dbmongo의 collection 연결
 from pymongo import MongoClient
-mongoClient = MongoClient("mongodb://192.168.10.238:27017/")
+mongoClient = MongoClient("mongodb://192.168.10.240:27017/AI_LKJ")
 
 # database 연결
 database = mongoClient["AI_LKJ"]
@@ -34,7 +34,7 @@ browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory),
 capabilities = browser.capabilities
 
 # 주소 입력
-browser.get("https://kr.trip.com/flights/seoul-to-busan/tickets-sel-pus?dcity=sel&acity=pus&ddate=2024-01-20&rdate=2024-01-25&flighttype=rt&class=y&lowpricesource=searchform&quantity=4&searchboxarg=t&nonstoponly=off&locale=ko-KR&curr=KRW")
+browser.get("https://www.skyscanner.co.kr/transport/flights/gmp/pus/240120/?adultsv2=4&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=true&ref=home&rtn=0")
 pass
 # html 파일 받음(and 확인)
 html = browser.page_source
@@ -44,16 +44,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
-# element_body = browser.find_element(by=By.CSS_SELECTOR,value="div.l-inner.m-main-inner.is-v2.clearfix")
-
-airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "#J_resultList> div")
+# #J_resultList> div
+airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "div > div.UpperTicketBody_container__NDcwM")
 time.sleep(2)
 airport_name_list = []
 airport_time_list = []
 airport_content_list = []
 for airport_item in airport_list :
     try :
-        airport_name = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flights-name")
+        airport_name = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.LogoImage_container__MDU0Z.LegLogo_logoContainer__ODdkM.UpperTicketBody_legLogo__ZjYwM > div > div > img")
         str_airport_name = airport_name.text
         pass
     except :
@@ -62,7 +61,7 @@ for airport_item in airport_list :
     pass
     
     try :
-        airport_time = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flight-info-col.col-2 > div")
+        airport_time = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > div.LegInfo_legInfo__ZGMzY")
         str_airport_time = airport_time.text
         pass
     except :
@@ -71,7 +70,7 @@ for airport_item in airport_list :
     pass
     
     try :
-        airport_content = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.item-con-price_a7E")
+        airport_content = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.BpkTicket_bpk-ticket__paper__OTA1O.BpkTicket_bpk-ticket__stub__OTgwN.Ticket_stub__NGYxN.BpkTicket_bpk-ticket__stub--padded__YzM0N.BpkTicket_bpk-ticket__stub--horizontal__ZmQzY > div > div > div")
         str_airport_content = airport_content.text
         pass
     except :
@@ -79,7 +78,11 @@ for airport_item in airport_list :
     airport_content_list.append(str_airport_content)
     pass
 
-# print
+for i in range(len(airport_list)) :
+    collection.insert_one({"항공사" : airport_name_list[i],
+                          "소요시간" : airport_time_list[i],
+                          "가격" : airport_content_list[i]})
+pass
     
 # 브라우저 종료
 browser.quit()
