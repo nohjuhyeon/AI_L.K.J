@@ -1,11 +1,12 @@
-# ## dbmongo의 collection 연결
-# from pymongo import MongoClient
-# mongoClient = MongoClient("mongodb://localhost:27017")
-# # database 연결
-# database = mongoClient["gatheringdatas"]
-# # collection 작업
-# collection = database['watcha_comments']
-# collection.delete_many({})
+def connection() :
+    from pymongo import MongoClient
+    mongoClient = MongoClient("mongodb://192.168.10.240:27017/")
+    # database 연결
+    database = mongoClient["AI_LKJ"]
+    # collection 작업
+    collection = database['reserve_transfer_bus']
+    # collection.delete_many({})
+    return collection
 
 # * 웹 크롤링 동작
 from selenium import webdriver 
@@ -42,36 +43,115 @@ html = browser.page_source                          # - html 파일 받음(and �
 from selenium.webdriver.common.by import By          # - 정보 획득
 # browser.save_screenshot('./formats.png')           
 
+# 검색 전
 
+button_depart = "#readDeprInfoList > p"    # 출발지
 local_depart = "div.area_scroll.scrollbar-inner.scroll-content > ul > li:nth-child(2) > span"   # 서울
 local_arrive = "div.area_scroll.scrollbar-inner.scroll-content > ul > li:nth-child(9) > span"   # 부산
 local_list = "ul#tableTrmList > li> span"   # 리스트 목록
 button_search = "#alcnSrchBtn > button" # 조회하기 버튼
 time_depart = "#alcnList > p > span.start_time" # 출발시간
+day_depart = "#ui-datepicker-div > table > tbody > tr:nth-child(3) > td:nth-child(7) > a" # 20일
+day_calender = "p > img" # 달력
 
-element_depart = browser.find_element(by = By.CSS_SELECTOR, value = local_depart)
-element_arrive = browser.find_element(by = By.CSS_SELECTOR, value = local_arrive)
+element_button_depart = browser.find_element(by = By.CSS_SELECTOR, value = button_depart)
+element_local_depart = browser.find_element(by = By.CSS_SELECTOR, value = local_depart)
+element_local_arrive = browser.find_element(by = By.CSS_SELECTOR, value = local_arrive)
 element_depart_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
 element_arrive_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
 element_search = browser.find_element(by = By.CSS_SELECTOR, value = button_search)
 element_time = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+element_day_depart = browser.find_element(by = By.CSS_SELECTOR, value = day_depart)
+element_day_calender = browser.find_element(by = By.CSS_SELECTOR, value = day_calender)
 
+# 검색 후(스크래핑)
+name_depart = "#readDeprInfoList > p"
+element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)
+name_arrive = "#readArvlInfoList > p"
+element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+time_depart = "#alcnList > p > span.start_time" # 출발시간
+element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
 
+from selenium.common.exceptions import NoSuchElementException
+import pyautogui
+
+element_day_calender.click()    # 달력 누르기
+time.sleep(2)
+element_day_depart = browser.find_element(by = By.CSS_SELECTOR, value = day_depart)
+element_day_depart.click()  # 20일 누르기
 
 while True :
+    element_button_depart.click()   # 출발지 클릭
+    pass
+    element_local_depart.click()    # 서울 클릭
     
-    element_depart.click()  # 출발지 클릭
-   
-    for x in range(element_depart_list):
-        element_depart_list[x].click()                 # 출발지 리스트 하나씩 클릭
+    element_depart_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
+    for x in range(len(element_depart_list)):
+        element_depart_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
+        pass
+        element_depart_list[x].click()                 # 서울의 출발지 리스트 하나씩 클릭
 
-        element_arrive.click    # 도착지 클릭
-        for y in range(element_arrive_list):
+        element_local_arrive.click()    # 부산 클릭
+        element_arrive_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
+        for y in range(len(element_arrive_list)):
+            element_arrive_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
+            time.sleep(1)
             element_arrive_list[y].click()      # 도착지 리스트 하나씩 클릭
+            time.sleep(1)
             element_search.click()   # 조회하기 클릭
+            time.sleep(2)
+
+            element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
+            element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+            element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+            for element_time in element_time_depart :
+                element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)  
+                element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+                element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+                
+                result_element_name_depart = element_name_depart.text
+                result_element_name_arrive = element_name_arrive.text
+                result_element_time_depart = element_time.text 
+                print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
+                pass
+                collection_database = connection()
+                collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart})
+
+            try : 
+                 # 출발지 클릭 (다시 실행)
+                element_button_depart.click() 
+                time.sleep(1)
+            except :
+                pyautogui.press('확인')
+                
+                time.sleep(1)
+
+                element_button_depart.click() 
+            finally : 
+                pass
+            element_local_depart.click()    # 서울 클릭
+            time.sleep(1)
+            
+            if y < len(element_arrive_list)-1 :
+                element_depart_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
+                element_depart_list[x].click()             
+                time.sleep(1)    # 서울의 출발지 리스트 하나씩 클릭
+                element_local_arrive.click()    # 부산 클릭
+            elif y == len(element_arrive_list)-1 :
+                break
             
 
 
+
+
+        
+
+
+
+
+selector_value = "#alcnList > p"
+element_bundle = browser.find_elements(by=By.CSS_SELECTOR, value = selector_value)
+
 # for x in range(element_list) :  
 
-    browser.quit()                                      # - 브라우저 종료
+browser.quit()                                      # - 브라우저 종료
