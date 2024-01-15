@@ -44,42 +44,42 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
-element_body = browser.find_element(by=By.CSS_SELECTOR,value="div.l-inner.m-main-inner.is-v2.clearfix")
+# element_body = browser.find_element(by=By.CSS_SELECTOR,value="div.l-inner.m-main-inner.is-v2.clearfix")
 
-airport_list = element_body.find_elements(by=By.CSS_SELECTOR,value = "div.m-main-list")
+airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "#J_resultList> div")
 time.sleep(2)
 airport_name_list = []
 airport_time_list = []
 airport_content_list = []
 for airport_item in airport_list :
     try :
-        airport_name_list = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flights-name")
-        str_airport_name = airport_name_list.text
+        airport_name = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flights-name")
+        str_airport_name = airport_name.text
         pass
     except :
         str_airport_name = ""
-        airport_name_list.append(str_airport_name)
+    airport_name_list.append(str_airport_name)
     pass
     
     try :
-        airport_time_list = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flight-info-col.col-2 > div")
-        str_airport_time = airport_time_list.text
+        airport_time = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.flight-info-col.col-2 > div")
+        str_airport_time = airport_time.text
         pass
     except :
         str_airport_time = ""
-        airport_time_list.append(str_airport_time)
+    airport_time_list.append(str_airport_time)
     pass
     
     try :
-        airport_content_list = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.item-con-price_a7E")
-        str_airport_content = airport_content_list.text
+        airport_content = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.item-con-price_a7E")
+        str_airport_content = airport_content.text
         pass
     except :
         str_airport_content = ""
-        airport_content_list.append(str_airport_content)
+    airport_content_list.append(str_airport_content)
     pass
 
-print
+# print
     
 # 브라우저 종료
 browser.quit()
