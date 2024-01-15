@@ -89,8 +89,9 @@ async def list_post(request:Request, page_number: Optional[int]=1):
 @router.get("/reserve_transfer_train") # 펑션 호출 방식
 async def list_post(request:Request, page_number: Optional[int]=1):
     await request.form()
-    # train_list = await collection_transfer_train_list.get_all()
+    train_list = await collection_transfer_train_list.get_all()
     conditions = { }
+    
     train_list_pagination, pagination = await collection_transfer_train_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     print(train_list_pagination)
