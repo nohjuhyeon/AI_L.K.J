@@ -28,31 +28,42 @@ chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x
 # WebDriver 생성
 webdriver_manager_dricetory = ChromeDriverManager().install()
 
-browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory), options=chrome_options)                        # - chrome browser 열기
+# chrome browser 열기
+browser = webdriver.Chrome(service = ChromeService(webdriver_manager_directory), options=chrome_options)                        
 
 # Chrome WebDriver의 capabilities 속성 사용
 capabilities = browser.capabilities
 
 # 주소 입력
-browser.get("https://www.skyscanner.co.kr/transport/flights/gmp/pus/240120/?adultsv2=4&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=true&ref=home&rtn=0")
+browser.get("https://flight-web.yanolja.com/flights/list?departurePlaceTypeCode=CITY&departurePlaceCode=SEL&arrivalPlaceTypeCode=CITY&arrivalPlaceCode=PUS&cabinClasses=ECONOMY,BUSINESS&adultsCount=4&outboundDepartureDate=2024-01-20")
 pass
 # html 파일 받음(and 확인)
 html = browser.page_source
+time.sleep(2)
 pass
 # 정보 획득
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 
 # #J_resultList> div
-airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "div > div.UpperTicketBody_container__NDcwM")
-time.sleep(2)
+airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "div.css-x97jm9.e1tjxvrm0 > div")
+
+airport_image_list = []
 airport_name_list = []
 airport_time_list = []
 airport_content_list = []
 for airport_item in airport_list :
     try :
-        airport_name = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.LogoImage_container__MDU0Z.LegLogo_logoContainer__ODdkM.UpperTicketBody_legLogo__ZjYwM > div > div > img")
+        airport_image = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > a > div.airlineImageWrapper > img")
+        str_airport_image = airport_image.text
+        pass
+    except :
+        str_airport_image = ""
+    airport_image_list.append(str_airport_image)
+    pass
+    
+    try :
+        airport_name = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > div.leftArea > div.css-1grj4oy-TextStyled.e9cha6a0")
         str_airport_name = airport_name.text
         pass
     except :
@@ -61,7 +72,7 @@ for airport_item in airport_list :
     pass
     
     try :
-        airport_time = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > div.LegInfo_legInfo__ZGMzY")
+        airport_time = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > div.leftArea > p.css-1wb6sft-TextStyled.e9cha6a0")
         str_airport_time = airport_time.text
         pass
     except :
@@ -70,8 +81,8 @@ for airport_item in airport_list :
     pass
     
     try :
-        airport_content = airport_item.find_element(by=By.CSS_SELECTOR, value = "div.BpkTicket_bpk-ticket__paper__OTA1O.BpkTicket_bpk-ticket__stub__OTgwN.Ticket_stub__NGYxN.BpkTicket_bpk-ticket__stub--padded__YzM0N.BpkTicket_bpk-ticket__stub--horizontal__ZmQzY > div > div > div")
-        str_airport_content = airport_content.text
+        airport_content = airport_item.find_elements(by=By.CSS_SELECTOR, value = " div > div.rightArea > div:nth-child(1) > p >span")
+        str_airport_content = airport_content[0].text + airport_content[1].text
         pass
     except :
         str_airport_content = ""
@@ -79,9 +90,10 @@ for airport_item in airport_list :
     pass
 
 for i in range(len(airport_list)) :
-    collection.insert_one({"항공사" : airport_name_list[i],
-                          "소요시간" : airport_time_list[i],
-                          "가격" : airport_content_list[i]})
+    collection.insert_one({"airport_image" : airport_image_list[i],
+                          "airport_name" : airport_name_list[i],
+                          "airport_time" : airport_time_list[i],
+                          "airport_price" : airport_content_list[i]})
 pass
     
 # 브라우저 종료

@@ -23,3 +23,11 @@ class transfer_train_list(Document): # 상속을 위한 것                 # �
     train_arrival_time : Optional[str] = None
     class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
         name = "reserve_transfer_train" # collection의 이름
+
+class transfer_airport_list(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
+    airport_image: Optional[str] = None
+    airport_name: Optional[str] = None
+    airport_time: Optional[str] = None
+    airport_price: Optional[str] = None    
+    class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
+        name = "reserve_transfer_airport" # collection의 이름
