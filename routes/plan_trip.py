@@ -91,9 +91,16 @@ async def list_post(request:Request):
 
 @router.get("/reserve_transfer/{page_number}") # 펑션 호출 방식
 @router.get("/reserve_transfer") # 펑션 호출 방식
-async def list_post(request:Request, page_number: Optional[int]=1):
+async def list_get(request:Request, page_number: Optional[int]=1):
+    transfer_type = dict(request._query_params)
     await request.form()
     conditions = { }
+    try :
+        search_word = transfer_type["transfer_cate"]
+    except:
+        search_word = None
+    if search_word:     # 검색어 작성
+        conditions = {"transfer_cate" : { '$regex': search_word}}
     total_list_pagination, pagination = await collection_transfer_total_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer.html", context={'request':request,
