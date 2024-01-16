@@ -114,23 +114,23 @@ def depart() :
                 element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
                 element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                 element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
+                element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
                 for element_time in element_time_depart :
-                    element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)  
+                    element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)  
                     element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                     element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                    element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                    element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                    element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
+                    element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                    element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                    element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
                     
-                    result_element_name_depart = element_name_depart.text
+                    result_element_name_depart = element_name_depart.text                       # text_list = [element.text for element in my_list]
                     result_element_name_arrive = element_name_arrive.text
-                    result_element_time_depart = element_time.text 
-                    result_element_charge_adult = element_charge_adult.text
-                    result_element_charge_child = element_charge_child.text
-                    result_element_charge_youth = element_charge_youth.text
+                    result_element_time_depart =  [element.text for element in element_time_depart]
+                    result_element_charge_adult = [element.text for element in element_charge_adult]
+                    result_element_charge_child = [element.text for element in element_charge_child]
+                    result_element_charge_youth = [element.text for element in element_charge_youth]
 
 
 
@@ -165,7 +165,7 @@ def depart() :
                 elif y == len(element_arrive_list)-1 :
                     break
             
-# depart()
+depart()
 
 
 def arrive() :
@@ -246,7 +246,7 @@ def arrive() :
                 elif y == len(element_depart_list)-1 :
                     break
 
-arrive()
+# arrive()
 
 
 # - 브라우저 종료
