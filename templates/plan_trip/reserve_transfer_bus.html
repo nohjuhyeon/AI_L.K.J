@@ -77,29 +77,29 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item {{ '' if pagination.has_previous_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_train/{{pagination.first_page}}">
+                        formaction="/plan_trip/reserve_transfer_bus/{{pagination.first_page}}">
                         맨 처음
                     </button>
 
                 </li>
                 <li class="page-item {{ '' if pagination.has_previous_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_train/{{pagination.previous_page}}">이전</button>
+                        formaction="/plan_trip/reserve_transfer_bus/{{pagination.previous_page}}">이전</button>
                 </li>
                 {% for page_num in pagination.current_page_range %}
                 <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
-                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_train/{{ page_num }}">
+                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_bus/{{ page_num }}">
                         {{page_num}}
                     </button>
                 </li>
                 {% endfor %}
                 <li class="page-item {{ '' if pagination.has_next_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_train/{{ pagination.next_page }}">다음</button>
+                        formaction="/plan_trip/reserve_transfer_bus/{{ pagination.next_page }}">다음</button>
                 </li>
                 <li class="page-item {{ '' if pagination.has_next_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_train/{{ pagination.last_page }}">
+                        formaction="/plan_trip/reserve_transfer_bus/{{ pagination.last_page }}">
                         맨 끝
                     </button>
                     
