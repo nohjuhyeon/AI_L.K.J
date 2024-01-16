@@ -9,15 +9,17 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
-from models.reserve_transfer import transfer_car_list,transfer_train_list,transfer_bus_list,transfer_airport_list
+from models.reserve_transfer import transfer_car_list,transfer_train_list,transfer_bus_list,transfer_airport_list,tour_list
 from models.tour_plan import reco_trip_plan,reco_trip_add
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
-collection_transfer_airport_list = Database(transfer_train_list)
 collection_transfer_bus_list = Database(transfer_bus_list)
 collection_transfer_airport_list = Database(transfer_airport_list)
 collection_reco_trip_plan = Database(reco_trip_plan)
+collection_tour_list = Database(tour_list)
 collection_reco_trip_add = Database(reco_trip_add)
+
+
 
 
 ## 여행 계획 추천
@@ -191,3 +193,29 @@ async def list_post(request:Request):
     await request.form()
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
+
+@router.post("/reserve_tour") # 펑션 호출 방식
+async def list_post(request:Request):
+    await request.form()
+    tour_list = await collection_tour_list.get_all()
+    print(tour_list)
+    print(dict(await request.form()))
+    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
+                                                                                           'tour_list': tour_list})
+
+from typing import Optional
+@router.get("/reserve_tour/{page_number}") # 펑션 호출 방식
+@router.get("/reserve_tour") # 펑션 호출 방식
+async def list_post(request:Request, page_number: Optional[int]=1):
+    await request.form()
+    tour_list = await collection_tour_list.get_all()
+    total = len(tour_list)
+    conditions = {}
+    print(tour_list)
+    print(dict(await request.form()))
+    pagination = Paginations(total,page_number)
+    tour_list_pagination, pagination = await collection_tour_list.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
+                                                                                           'tour_list':tour_list_pagination,
+                                                                                           'pagination':pagination})
