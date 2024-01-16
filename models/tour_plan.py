@@ -14,4 +14,7 @@ class reco_trip_plan(Document): # 상속을 위한 것                 # 데이�
   
   # beanie는 mongoDB를 비동기적으로 다루기 위한 라이브러리
         
-
+class reco_trip_add(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
+    reco_list : Optional[str] = None
+    class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
+        name = "reco_trip_add" # collection의 이름

@@ -117,30 +117,30 @@ def depart() :
                     element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
                     element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                     element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                    # element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
-                    # element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
-                    # element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
-                    for element_time in element_time_depart :
+                    element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                    element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                    element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
+                    for z in range(len(element_time_depart)) :
                         element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)  
                         element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
-                        # element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                        # element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
-                        # element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
-                        # element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
-                        
+                        element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+                        element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                        element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                        element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
+
                         result_element_name_depart = element_name_depart.text
                         result_element_name_arrive = element_name_arrive.text
-                        result_element_time_depart = element_time.text 
-                        # result_element_charge_adult = element_charge_adult.text
-                        # result_element_charge_child = element_charge_child.text
-                        # result_element_charge_youth = element_charge_youth.text
+                        result_element_time_depart = [element.text for element in element_time_depart]
+                        result_element_charge_adult = [element.text for element in element_charge_adult]             # text_list = [element.text for element in my_list]
+                        result_element_charge_child = [element.text for element in element_charge_child]     
+                        result_element_charge_youth = [element.text for element in element_charge_youth]     
 
-                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
-                        # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
+                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart[z]))
+                        print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult[z],result_element_charge_child[z],result_element_charge_youth[z]))
                         pass
                         collection_database = connection()
-                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart, "bus_direction" : "하행"})
-                        #                                 "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth})
+                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart[z], "bus_direction" : "하행",
+                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z]}) 
 
                 
                     # 출발지 클릭 (다시 실행)
@@ -197,33 +197,33 @@ def arrive() :
                     element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
                     element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                     element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                    # element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                    # element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                    # element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
-                    for element_time in element_time_depart :
+                    element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                    element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                    element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
+                    for z in range(len(element_time_depart)) :
                         element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)  
                         element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                         element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                        # element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                        # element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                        # element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
+                        element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                        element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                        element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
                         
                         result_element_name_depart = element_name_depart.text
                         result_element_name_arrive = element_name_arrive.text
-                        result_element_time_depart = element_time.text 
-                        # result_element_charge_adult = element_charge_adult.text
-                        # result_element_charge_child = element_charge_child.text
-                        # result_element_charge_youth = element_charge_youth.text
+                        result_element_time_depart = [element.text for element in element_time_depart]
+                        result_element_charge_adult = [element.text for element in element_charge_adult]             # text_list = [element.text for element in my_list]
+                        result_element_charge_child = [element.text for element in element_charge_child]     
+                        result_element_charge_youth = [element.text for element in element_charge_youth]   
 
 
 
                         
-                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
-                        # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
+                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart[z]))
+                        print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult[z],result_element_charge_child[z],result_element_charge_youth[z]))
                         pass
                         collection_database = connection()
-                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart, "bus_direction" : "상행"}) 
-                                                        # "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth}
+                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart[z], "bus_direction" : "상행",
+                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z]}) 
 
 
                     # 출발지 클릭 (다시 실행)
@@ -249,7 +249,7 @@ def arrive() :
                     break
 
 
-# depart()
+depart()
 
 arrive()
 

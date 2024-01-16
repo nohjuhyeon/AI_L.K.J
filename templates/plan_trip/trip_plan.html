@@ -66,82 +66,26 @@
 </form>
 <div class="scrollable-box-search">
     <div class="list-group list-group-flush border-bottom scrollarea">
+        {%for reco_add in reco_add_list%}
         <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
             <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
                 class="rounded-circle flex-shrink-0">
             <div class="d-flex gap-2 w-100 justify-content-between">
                 <div>
-                    <h6 class="mb-0">첫번째 추천</h6>
-                    <p class="mb-0 opacity-75">밥이 맛있어요</p>
+                    <h6 class="mb-0">{{reco_add.reco_list}}</h6>
                 </div>
                 <div class="row col-md-3">
                     <select class="form-select col-md-8" name="transfer_mem" required>
                         <option value="" disabled selected style="display: none;">추가할 날짜</option>
-                        <option value=1>1일차</option>
-                        <option value=2>2일차</option>
-                        <option value=3>3일차</option>
+                        {%for dict_tour in tour_list%}
+                        <option value={{dict_tour.day}}>{{dict_tour.day}}일차</option>
+                        {%endfor%}
                     </select>
                     <button class="btn btn-primary button-sm col-md-4" type="submit">추가</button>
                 </div>
             </div>
         </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
-                class="rounded-circle flex-shrink-0">
-            <div class="d-flex gap-2 w-100 justify-content-between">
-                <div class="col">
-                    <h6 class="mb-0">두번째 추천</h6>
-                    <p class="mb-0 opacity-75">집이 좋아요</p>
-                </div>
-                <div class="row col-md-3">
-                    <select class="form-select col-md-8" name="transfer_mem" required>
-                        <option value="" disabled selected style="display: none;">추가할 날짜</option>
-                        <option value=1>1일차</option>
-                        <option value=2>2일차</option>
-                        <option value=3>3일차</option>
-                    </select>
-                    <button class="btn btn-primary button-sm col-md-4" type="submit">추가</button>
-                </div>
-
-            </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
-                class="rounded-circle flex-shrink-0">
-            <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                    <h6 class="mb-0">세번째 추천</h6>
-                    <p class="mb-0 opacity-75">모든 게 좋아요</p>
-                </div>
-                <div class="row col-md-3">
-                    <select class="form-select col-md-8" name="transfer_mem" required>
-                        <option value="" disabled selected style="display: none;">추가할 날짜</option>
-                        <option value=1>1일차</option>
-                        <option value=2>2일차</option>
-                        <option value=3>3일차</option>
-                    </select>
-                    <button class="btn btn-primary button-sm col-md-4" type="submit">추가</button>
-                </div>
-            </div>
-        </a> <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-            <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"
-                class="rounded-circle flex-shrink-0">
-            <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                    <h6 class="mb-0">네번째 추천</h6>
-                    <p class="mb-0 opacity-75">없는 게 없어요</p>
-                </div>
-                <div class="row col-md-3">
-                    <select class="form-select col-md-8" name="transfer_mem" required>
-                        <option value="" disabled selected style="display: none;">추가할 날짜</option>
-                        <option value=1>1일차</option>
-                        <option value=2>2일차</option>
-                        <option value=3>3일차</option>
-                    </select>
-                    <button class="btn btn-primary button-sm col-md-4" type="submit">추가</button>
-                </div>
-            </div>
-        </a>
+        {%endfor%}
     </div>
 </div>
 {%endblock%}
