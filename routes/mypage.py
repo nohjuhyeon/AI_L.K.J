@@ -81,10 +81,13 @@ async def list_post(request:Request):
 @router.get("/{object_id}")                     
 async def login_main_get(request:Request, object_id:PydanticObjectId):
     print(dict(request._query_params))
-    user_dict = await collection_user_list.get(object_id)
-    print(user_dict)
-    return templates.TemplateResponse("mypage/mypage_main.html",{'request':request,
-                                                   'user_dict': user_dict})
+    user_id_content = dict(request._query_params)["user_id"]
+    user_id = "ObjectId('{}')".format(user_id_content)
+    user_list = await collection_user_list.get_all()
+    # for i in range(len(user_list)):
+    #     if user_list[i]["_id"] == user_id:
+    # print(user_dict)
+    return templates.TemplateResponse("mypage/mypage_main.html",{'request':request})
 
 @router.post("/{object_id}")                      
 async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
