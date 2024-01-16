@@ -93,7 +93,7 @@ for row_num in range(1, 21):
     # 예외 처리를 사용해 train_cell 추출
     train_cell_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-00"
     train_cell = "None"  # 기본값 설정
-    for class_suffix in ['00', '02', '08']:
+    for class_suffix in ['00', '02', '07', '08', '10', '18']:
         try:
             train_cell = browser.find_element(By.CSS_SELECTOR, f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-{class_suffix}").text
             if train_cell:  # 값이 존재하면 루프 종료
@@ -147,7 +147,7 @@ while True:
         # 예외 처리를 사용해 train_cell 추출
         train_cell_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-00"
         train_cell = "None"  # 기본값 설정
-        for class_suffix in ['00', '02', '08']:
+        for class_suffix in ['00', '02', '07', '08', '10', '18']:
             try:
                 train_cell = browser.find_element(By.CSS_SELECTOR, f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-{class_suffix}").text
                 if train_cell:  # 값이 존재하면 루프 종료
@@ -208,7 +208,7 @@ for row_num in range(1, 21):
     # 예외 처리를 사용해 train_cell 추출
     train_cell_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-00"
     train_cell = "None"  # 기본값 설정
-    for class_suffix in ['00', '02', '08']:
+    for class_suffix in ['00', '02', '07', '08', '10', '18']:
         try:
             train_cell = browser.find_element(By.CSS_SELECTOR, f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-{class_suffix}").text
             if train_cell:  # 값이 존재하면 루프 종료
@@ -262,7 +262,7 @@ while True:
         # 예외 처리를 사용해 train_cell 추출
         train_cell_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-00"
         train_cell = "None"  # 기본값 설정
-        for class_suffix in ['00', '02', '08']:
+        for class_suffix in ['00', '02', '07', '08', '10', '18']:
             try:
                 train_cell = browser.find_element(By.CSS_SELECTOR, f"#tableResult > tbody > tr:nth-child({row_num}) > td.bg-{class_suffix}").text
                 if train_cell:  # 값이 존재하면 루프 종료
