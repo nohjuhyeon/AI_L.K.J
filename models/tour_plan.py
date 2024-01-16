@@ -5,6 +5,7 @@ from beanie import Document, Link                   # 데이터베이스의 데�
 
 # 개발자 실수로 들어가는 field 제한
 class reco_trip_plan(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
+    concept_number : Optional[str] = None
     concept_name: Optional[str] = None
     day: Optional[int] = None
     tour_list : List[str] = None

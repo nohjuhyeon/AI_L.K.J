@@ -33,9 +33,14 @@ async def list_post(request:Request):
     await request.form()
     concept_tour = await collection_reco_trip_plan.get_all()
     concept_list = []
+    check_concept_list = []
     for i in range(len(concept_tour)):
-        concept_list.append(concept_tour[i].concept_name)
-    concept_list = set(concept_list)
+        if concept_tour[i].concept_name in check_concept_list:
+            pass
+        else:
+            concept_list.append(concept_tour[i])
+            check_concept_list.append(concept_tour[i].concept_name)
+            pass
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request,
                                                                                      'concept_list' : concept_list})
@@ -50,12 +55,17 @@ async def list_post(request:Request):
 @router.get("/trip_plan") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
-    condition = { }
-    condition["day"] = dict(request._query_params)['trip_concept']
+    dict(request._query_params)
     print(dict(await request.form()))
-    tour_plan_list = await collection_reco_trip_plan.getsbyconditions(condition) 
+    tour_plan_list = await collection_reco_trip_plan.get_all()
+    tour_list = []
+    for i in range(len(tour_plan_list)):
+        if tour_plan_list[i].concept_number == dict(request._query_params)["trip_concept"]:
+            tour_list.append(tour_plan_list)
+    print(tour_list) 
     pass
-    return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request,
+                                                                                'tour_list': tour_list})
 
 
 ## 교통 예약
