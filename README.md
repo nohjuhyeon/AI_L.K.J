@@ -24,15 +24,15 @@
 
 |활동|날짜|진행 상황|
 |--|--|--|
-|의뢰팀 제안서 검토 및 요구서 협의|1/8 ~ 1/9|O|
+|의뢰팀 제안서 검토 및 요구서 협의|1/8~1/9|O|
 |네이밍룰 및 화면정의서 작성|1/10|O|
-|화면정의서 조정|1/10 ~ 1/11|O|
-|프로그램 리스트|1/11 ~||
-|Github readme 작성|1/10 ~||
+|화면정의서 조정|1/10~1/11|O|
+|프로그램 리스트|1/11~||
+|Github readme 작성|1/10~||
 |Sample Code 작성|1/11~||
-|웹 html 작성|1/11 ~||
-||||
-||||
+|웹 html 작성|1/11~||
+|웹 스크래핑|1/15~1/16||
+|fastAPI 활용|1/15~1/16||
 ||||
 |1차 프로젝트 PT|1/19||
 ||||
@@ -41,10 +41,12 @@
 
 |구분|소프트웨어|활용 범위|
 |--|--|--|
-|문서작성|html| 예 : 웹페이지 기본적인 구조 제작|
-||bootstrap|--|
+|문서작성|html|웹페이지 기본 구조 제작|
+||bootstrap|웹페이지 디자인 제작|
 |프로그래밍|python|--|
-|DB|mongoDB|--|
+||selenium|--|
+|DB|mongoDB|데이터베이스 저장 관리|
+||fastAPI||
 
 
 ### 건의사항
@@ -52,5 +54,9 @@
 
 ### #참조 사이트
 
-<p> [병원평가통합포털] (https://khqa.kr/main) </p>
-<p> [부트스트랩] https://getbootstrap.kr/docs/5.3/examples/ </p>
+<p> [부트스트랩](https://getbootstrap.kr/docs/5.3/examples/) </p>
+<p> [항공 예약 페이지](https://flight-web.yanolja.com/flights/list?departurePlaceTypeCode=CITY&departurePlaceCode=SEL&arrivalPlaceTypeCode=CITY&arrivalPlaceCode=PUS&cabinClasses=ECONOMY,BUSINESS&adultsCount=4&outboundDepartureDate=2024-01-20) </p>
+<p> [버스 예약 페이지](https://www.kobus.co.kr/oprninf/alcninqr/oprnAlcnPage.do) </p>
+<p> [렌트카 예약 페이지](https://rent-car.zzimcar.com/home) </p>
+<p> [기차 예약 페이지](https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21112.do) </p>
+<p> [] </p>
