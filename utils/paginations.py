@@ -30,7 +30,7 @@ class Paginations:
         self.next_page = self.end_page + 1
         # 다음 페이지 존재 여부
         self.has_next_page = True
-        self.has_next_page = 0 <= int(self.current_page/self.pages_per_block) < int(self.total_pages/self.pages_per_block)
+        self.has_next_page = 1 <= self.current_block < self.total_blocks
         # 이전 블럭 존재 여부(첫 페이지)
         self.has_previous_block = self.current_block > 1
         # 다음 블럭 존재 여부(마지막 페이지)

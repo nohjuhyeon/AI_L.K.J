@@ -94,3 +94,19 @@ async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
     print(user_dict)
     return templates.TemplateResponse("mypage/mypage_main.html",{'request':request,
                                                    'user_dict': user_dict})
+
+@router.post("/info/{object_id}") # 펑션 호출 방식
+async def list_post(request:Request, object_id:PydanticObjectId):
+    await request.form()
+    user_dict = await collection_user_list.get(object_id)
+    print(dict(await request.form()))
+    return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request,
+                                                                               'user_dict': user_dict})
+
+@router.get("/info/{object_id}") # 펑션 호출 방식
+async def list_post(request:Request, object_id:PydanticObjectId):
+    await request.form()
+    user_dict = await collection_user_list.get(object_id)
+    print(dict(await request.form()))
+    return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request,
+                                                                               'user_dict': user_dict})
