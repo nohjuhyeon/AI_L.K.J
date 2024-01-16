@@ -10,14 +10,14 @@ templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
 from models.reserve_transfer import transfer_car_list,transfer_train_list,transfer_bus_list,transfer_airport_list
-from models.tour_plan import reco_trip_plan
+from models.tour_plan import reco_trip_plan,reco_trip_add
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
 collection_transfer_airport_list = Database(transfer_train_list)
 collection_transfer_bus_list = Database(transfer_bus_list)
 collection_transfer_airport_list = Database(transfer_airport_list)
 collection_reco_trip_plan = Database(reco_trip_plan)
-
+collection_reco_trip_add = Database(reco_trip_add)
 
 
 ## 여행 계획 추천
@@ -65,9 +65,11 @@ async def list_post(request:Request):
         if tour_plan_list[i].concept_number == dict(request._query_params)["trip_concept"]:
             tour_list.append(tour_plan_list[i])
     print(tour_list) 
+    reco_add_list = await collection_reco_trip_add.get_all()
     pass
     return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request,
-                                                                                'tour_list': tour_list})
+                                                                                'tour_list': tour_list,
+                                                                                'reco_add_list': reco_add_list})
 
 
 ## 교통 예약
