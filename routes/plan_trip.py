@@ -9,7 +9,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
-from models.reserve_transfer_car import transfer_car_list,transfer_train_list
+from models.reserve_transfer import transfer_car_list,transfer_train_list
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
 
@@ -67,6 +67,23 @@ async def list_post(request:Request):
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_car.html", context={'request':request,
                                                                                            'car_list':car_list})
+
+from typing import Optional
+@router.get("/reserve_transfer_airpost/{page_number}") # 펑션 호출 방식
+@router.get("/reserve_transfer_airpost") # 펑션 호출 방식
+async def list_post(request:Request, page_number: Optional[int]=1):
+    await request.form()
+    airpost_list = await collection_transfer_airpost_list.get_all()
+    total = len(airpost_list)
+    conditions = { }
+    print(airpost_list)
+    print(dict(await request.form()))
+    pagination = Paginations(total,page_number)
+    airpost_list_pagination, pagination = await collection_transfer_airpost_list.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_transfer_plane.html", context={'request':request,
+                                                                                           'airpost_list':airpost_list_pagination,
+                                                                                           'pagination':pagination})
 
 from typing import Optional
 @router.get("/reserve_transfer_car/{page_number}") # 펑션 호출 방식
