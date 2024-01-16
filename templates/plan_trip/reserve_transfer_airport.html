@@ -17,9 +17,11 @@
 </div>
 
 <div>
-    <button type="button" class="">뒤로가기</button>
-    <button type="button" class="">건너뛰기</button>
-    <button type="button" class="">다음</button>
+    <form>
+        <button formaction="/" class="">뒤로가기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">건너뛰기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">다음</button>
+    </form>
 </div>
 
 <div class="selector_box">
@@ -34,25 +36,24 @@
 </div>
 <form>
     {%for dict_airport in airport_list%}
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-md-3" style="border-style: ridge;">
             <img src={{dict_airport.airport_image}} alt="Tour Image" style="width: 100%;">
 
         </div>
         <div class="col-md-9" style="border-style: ridge;">
             <div class="row justify-content-between">
-                <div class="rentcar_date_info col-md-6">
-                    <h1>{{dict_airport.store_name}}</h1>
+                <div class="airport_date_info col-md-6">
+                    <h2>{{dict_airport.airport_time}}</h1>
                 </div>
-                <div class="rentcar_price_info col-md-3">
+                <div class="airport_price_info col-md-3">
                     <em style="font-size:x-large;">{{dict_airport.airport_price}}</em>
                 </div>
             </div>
             <div class="row justify-content-between">
-                <h3 class="col-md-4" style="border-style: ridge;">{{dict_airport.airport_name}}</h3>
-                <div class="col-md-4">
-                    <div style="border-style: ridge;">상품 별점</div>
-                    <div style="border-style: ridge;">상품 리뷰</div>
+                <h6 class="col-md-6" style="border-style: none;">{{dict_airport.airport_name}}</h3>
+                <div class="col-md-4 justify-content-end row">
+                    <button class="btn btn-primary col"> 예약 내역에 추가</button>
                 </div>
             </div>
         </div>
@@ -77,7 +78,8 @@
                 </li>
                 {% for page_num in pagination.current_page_range %}
                 <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
-                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_airport/{{ page_num }}">
+                    <button type="submit" class="page-link"
+                        formaction="/plan_trip/reserve_transfer_airport/{{ page_num }}">
                         {{page_num}}
                     </button>
                 </li>

@@ -138,8 +138,8 @@ def depart() :
                         print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
                         # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
                         pass
-                        # collection_database = connection()
-                        # collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart, 
+                        collection_database = connection()
+                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart, "bus_direction" : "하행"})
                         #                                 "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth})
 
                 
@@ -164,8 +164,6 @@ def depart() :
                     element_local_arrive.click()    # 부산 클릭
                 elif y == len(element_arrive_list)-1 :
                     break
-            
-# depart()
 
 
 def arrive() :
@@ -224,7 +222,7 @@ def arrive() :
                         # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
                         pass
                         collection_database = connection()
-                        collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart}) 
+                        collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart, "bus_direction" : "상행"}) 
                                                         # "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth}
 
 
@@ -249,6 +247,9 @@ def arrive() :
                     element_local_depart.click()    # 서울 클릭
                 elif y == len(element_depart_list)-1 :
                     break
+
+
+# depart()
 
 arrive()
 

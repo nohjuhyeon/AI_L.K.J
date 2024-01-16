@@ -51,7 +51,8 @@ airport_list = browser.find_elements(by=By.CSS_SELECTOR,value = "div.css-x97jm9.
 airport_image_list = []
 airport_name_list = []
 airport_time_list = []
-airport_content_list = []
+airport_price_list = []
+airport_seat_list = []
 for airport_item in airport_list :
     try :
         airport_tag = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > a > div.airlineImageWrapper > img")
@@ -81,19 +82,28 @@ for airport_item in airport_list :
     pass
     
     try :
-        airport_content = airport_item.find_elements(by=By.CSS_SELECTOR, value = " div > div.rightArea > div:nth-child(1) > p >span")
-        str_airport_content = airport_content[0].text + airport_content[1].text
+        airport_price = airport_item.find_elements(by=By.CSS_SELECTOR, value = " div > div.rightArea > div:nth-child(1) > p >span")
+        str_airport_price = airport_price[0].text + airport_price[1].text
         pass
     except :
-        str_airport_content = ""
-    airport_content_list.append(str_airport_content)
+        str_airport_price = ""
+    airport_price_list.append(str_airport_price)
+    pass
+
+    try :
+        airport_seat = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > div.rightArea > div.css-np7xiy-TextStyled.e9cha6a0")
+        str_airport_seat = airport_seat.text
+        pass
+    except :
+        str_airport_seat = ""
+    airport_seat_list.append(airport_seat_list)
     pass
 
 for i in range(len(airport_list)) :
     collection.insert_one({"airport_image" : airport_image_list[i],
                           "airport_name" : airport_name_list[i],
                           "airport_time" : airport_time_list[i],
-                          "airport_price" : airport_content_list[i]})
+                          "airport_price" : airport_price_list[i]})
 pass
     
 # 브라우저 종료
