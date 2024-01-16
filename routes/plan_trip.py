@@ -160,7 +160,7 @@ async def list_post(request:Request, page_number: Optional[int]=1):
     bus_list_pagination, pagination = await collection_transfer_bus_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_bus.html", context={'request':request,
-                                                                                           'train_list':bus_list_pagination,
+                                                                                           'bus_list':bus_list_pagination,
                                                                                            'pagination':pagination})
 
 ## 숙소 예약
