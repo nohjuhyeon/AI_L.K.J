@@ -10,8 +10,11 @@ templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
 from models.reserve_transfer import transfer_car_list,transfer_train_list
+from models.tour_plan import reco_trip_plan
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
+collection_transfer_airport_list = Database(transfer_train_list)
+collection_reco_trip_plan = Database(reco_trip_plan)
 
 
 
@@ -19,14 +22,23 @@ collection_transfer_train_list = Database(transfer_train_list)
 @router.post("/reco_trip_plan") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
+    concept_tour = await collection_reco_trip_plan.get_all()
+
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request,
+                                                                                     'concept_list' : concept_tour})
 
 @router.get("/reco_trip_plan") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
+    concept_tour = await collection_reco_trip_plan.get_all()
+    concept_list = []
+    for i in range(len(concept_tour)):
+        concept_list.append(concept_tour[i].concept_name)
+    concept_list = set(concept_list)
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request,
+                                                                                     'concept_list' : concept_list})
 
 ## 여행 계획
 @router.post("/trip_plan") # 펑션 호출 방식
@@ -38,11 +50,13 @@ async def list_post(request:Request):
 @router.get("/trip_plan") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
+    condition = { }
+    condition["day"] = dict(request._query_params)['trip_concept']
     print(dict(await request.form()))
-    car_list = await collection_transfer_car_list.get_all()
-    print(car_list)
-
+    tour_plan_list = await collection_reco_trip_plan.getsbyconditions(condition) 
+    pass
     return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request})
+
 
 ## 교통 예약
 @router.post("/reserve_transfer") # 펑션 호출 방식
@@ -53,9 +67,8 @@ async def list_post(request:Request):
 
 @router.get("/reserve_transfer") # 펑션 호출 방식
 async def list_post(request:Request):
-    await request.form()
-    print(dict(await request.form()))
-
+    dict(request._query_params)
+    print(dict(request._query_params))
     return templates.TemplateResponse(name="plan_trip/reserve_transfer.html", context={'request':request})
 
 ## 교통 예약
@@ -73,13 +86,13 @@ from typing import Optional
 @router.get("/reserve_transfer_airpost") # 펑션 호출 방식
 async def list_post(request:Request, page_number: Optional[int]=1):
     await request.form()
-    airpost_list = await collection_transfer_airpost_list.get_all()
+    airpost_list = await collection_transfer_airport_list.get_all()
     total = len(airpost_list)
     conditions = { }
     print(airpost_list)
     print(dict(await request.form()))
     pagination = Paginations(total,page_number)
-    airpost_list_pagination, pagination = await collection_transfer_airpost_list.getsbyconditionswithpagination(conditions
+    airpost_list_pagination, pagination = await collection_transfer_airport_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_plane.html", context={'request':request,
                                                                                            'airpost_list':airpost_list_pagination,
@@ -93,8 +106,6 @@ async def list_post(request:Request, page_number: Optional[int]=1):
     car_list = await collection_transfer_car_list.get_all()
     total = len(car_list)
     conditions = { }
-    print(car_list)
-    print(dict(await request.form()))
     pagination = Paginations(total,page_number)
     car_list_pagination, pagination = await collection_transfer_car_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
@@ -113,7 +124,6 @@ async def list_post(request:Request, page_number: Optional[int]=1):
 
     train_list_pagination, pagination = await collection_transfer_train_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
-    print(train_list_pagination)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer_train.html", context={'request':request,
                                                                                            'train_list':train_list_pagination,
                                                                                            'pagination':pagination})

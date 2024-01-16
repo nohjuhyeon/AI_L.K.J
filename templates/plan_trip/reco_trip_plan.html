@@ -2,32 +2,20 @@
 {%block main_container%}
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
     <form style="width: 80%;">
+        {%for concept in concept_list%}
         <div class="container p-4 my-3 alert" style="border: 1px solid #007bff;border-radius: 10px;">
             <div class="row">
-                <h3 class="col">CONCEPT 1 : 활동적인 여행</h3>
-                <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan"
-                    name="trip_concept" value="trip_concept1" method="">계획 짜러 가기</button>
+                <h3 class="col">CONCEPT {{loop.index0+1}} : {{concept}}</h3>
+                <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan/"
+                    name="trip_concept" value={{loop.index0+1}} formmethod="">계획 짜러 가기</button>
             </div>
         </div>
-        <div class="container p-4 my-3" style="border: 1px solid #007bff;border-radius: 10px;">
-            <div class="row">
-                <h3 class="col">CONCEPT 2 : 미식 여행</h3>
-                <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan"
-                    name="trip_concept" value="trip_concept2" method="">계획 짜러 가기</button>
-            </div>
-        </div>
-        <div class="container p-4 my-3 alert" style="border: 1px solid #007bff; border-radius: 10px;" >
-            <div class="row">
-                <h3 class="col">CONCEPT 3 : 문화탐험 여행</h3>
-                <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan"
-                    name="trip_concept" value="trip_concept3" method="">계획 짜러 가기</button>
-            </div>
-        </div>
+        {%endfor%}
         <div class="container p-4 my-3 alert" style="border: 1px solid #007bff;border-radius: 10px;">
             <div class="row">
-                <h3 class="col">CONCEPT 4 : 사용자 설정</h3>
+                <h3 class="col">CONCEPT {{concept_list|length+1}} : 사용자 설정</h3>
                 <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan"
-                    name="trip_concept" value="trip_concept_user" method="">계획 짜러 가기</button>
+                    name="trip_concept" value="{{concept_list|length+1}}" method="">계획 짜러 가기</button>
             </div>
         </div>
         <div class="container">
