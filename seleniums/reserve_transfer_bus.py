@@ -218,8 +218,8 @@ def arrive() :
 
 
                         
-                        # print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart[z]))
-                        # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult[z],result_element_charge_child[z],result_element_charge_youth[z]))
+                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart[z]))
+                        print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult[z],result_element_charge_child[z],result_element_charge_youth[z]))
                         pass
                         collection_database = connection()
                         collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart[z], "bus_direction" : "상행",
@@ -251,7 +251,7 @@ def arrive() :
 
 depart()
 
-# arrive()
+arrive()
 
 
 # - 브라우저 종료

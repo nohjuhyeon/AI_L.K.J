@@ -38,7 +38,7 @@
     {%for dict_bus in bus_list%}
     <div class="row">
         <div class="col-md-3" style="border-style: ridge;">
-            <img src="\images\bus.jpg" alt="Tour Image" style="width: 100%;">
+            <img src="\images\bus.jpg" alt="Tour Image" style="width: 100%; height: 100%">
 
         </div>
         <div class="col-md-9" style="border-style: ridge;">
@@ -54,16 +54,11 @@
             </div>
             <div class="row justify-content-between">
                 <!-- 금액 확인 버튼 -->
-                <button type="button" class="btn btn-primary col-md-2 ms-3" onclick="openKorailPopup();">
-                    금액 확인
-                </button>
-                <script>
-                    function openKorailPopup() {
-                      var url = "https://www.letskorail.com/ebizprd/EbizPrdTicketPr11121_i1.do?&txtRtnDvCd=N&txtChtrDvCd1=1&txtTrnClsfCd1=00&txtTrnGpCd1=100&txtDptRsStnCd1=0001&txtArvRsStnCd1=0020&txtRunDt1=20240120&txtTrnNo1=00001&txtStndSeatCnt1=000112&txtFreeSeatCnt1=-00001";
-                      var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
-                      window.open(url, "_blank", windowFeatures);
-                    }
-                    </script>
+                <div class="col-md-4 ms-3">
+                    <div>성인 요금 : {{dict_bus.charge_adult}}</div>
+                    <div>초등생 요금 : {{dict_bus.charge_child}}</div>
+                    <div>중고등 요금 : {{dict_bus.charge_youth}}</div>
+                                    </div>
                 <!-- 예약 내역에 추가 버튼 -->
                 <div class="col-md-4 justify-content-end d-flex">
                   <button class="btn btn-primary col">예약 내역에 추가</button>
