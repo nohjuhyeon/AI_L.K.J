@@ -50,7 +50,7 @@ local_depart = "div.area_scroll.scrollbar-inner.scroll-content > ul > li:nth-chi
 local_arrive = "div.area_scroll.scrollbar-inner.scroll-content > ul > li:nth-child(9) > span"       # 부산
 local_list = "ul#tableTrmList > li> span"                                                           # 리스트 목록
 button_search = "#alcnSrchBtn > button"                                                             # 조회하기 버튼
-# time_depart = "#alcnList > p > span.start_time"                                                     # 출발시간
+time_depart = "#alcnList > p > span.start_time"                                                     # 출발시간
 day_depart = "#ui-datepicker-div > table > tbody > tr:nth-child(3) > td:nth-child(7) > a"           # 20일
 day_calender = "p > img"                                                                            # 달력
 
@@ -60,7 +60,7 @@ element_local_arrive = browser.find_element(by = By.CSS_SELECTOR, value = local_
 element_depart_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
 element_arrive_list = browser.find_elements(by = By.CSS_SELECTOR, value = local_list)
 element_search = browser.find_element(by = By.CSS_SELECTOR, value = button_search)
-# element_time = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+element_time = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
 element_day_depart = browser.find_element(by = By.CSS_SELECTOR, value = day_depart)
 element_day_calender = browser.find_element(by = By.CSS_SELECTOR, value = day_calender)
 
@@ -89,7 +89,7 @@ time.sleep(2)
 element_day_depart = browser.find_element(by = By.CSS_SELECTOR, value = day_depart)
 element_day_depart.click()  # 20일 누르기
 
-while True :    # 서울 -> 부산
+while True :
     element_button_depart.click()   # 출발지 클릭
     pass
     element_local_depart.click()    # 서울 클릭
@@ -167,7 +167,6 @@ while True :    # 서울 -> 부산
             elif y == len(element_arrive_list)-1 :
                 break
             
-while True : # 부산 -> 서울 
 
 
 
