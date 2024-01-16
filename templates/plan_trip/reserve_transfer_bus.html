@@ -38,7 +38,7 @@
     {%for dict_bus in bus_list%}
     <div class="row">
         <div class="col-md-3" style="border-style: ridge;">
-            <img src="\images\korail.png" alt="Tour Image" style="width: 100%;">
+            <img src="\images\bus.jpg" alt="Tour Image" style="width: 100%;">
 
         </div>
         <div class="col-md-9" style="border-style: ridge;">
@@ -48,15 +48,8 @@
                 </div>
                 <div class="train_data_info col-md mb-4 mt-6">
                     <div style="border-style: ridge;">출발지 : {{dict_bus.bus_departure}}</div>
-                    <div style="border-style: ridge;">출발시간 : {{dict_bus.bus_departure_time}}</div>
-                </div>
-                <div class="train_data_info col-md mb-4 mt-6">
                     <div style="border-style: ridge;">도착지 : {{dict_bus.bus_arrival}}</div>
-                    <div style="border-style: ridge;">도착시간 : {{dict_bus.train_arrival_time}}</div>
-                </div>
-                <div class="train_data_info col-md mb-4 mt-6">
-                    <div style="border-style: ridge;">구분 : {{dict_bus.train_category}}</div>
-                    <div style="border-style: ridge;">열차번호 : {{dict_bus.train_number}}</div>
+                    <div style="border-style: ridge;">출발시간 : {{dict_bus.bus_departure_time}}</div>
                 </div>
             </div>
             <div class="row justify-content-between">
