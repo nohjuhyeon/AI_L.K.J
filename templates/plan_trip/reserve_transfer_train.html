@@ -8,16 +8,19 @@
 <div class="d-flex gap-2 justify-content-center py-5">
     <button class="btn btn-primary rounded-pill px-3" type="button">전체</button><button
         class="btn btn-info rounded-pill px-3" type="button"><a href="">고속버스</a></button>
-    <button class="btn btn-success rounded-pill px-3" type="button"><a href="/plan_trip/reserve_transfer_train">기차</a></button>
+    <button class="btn btn-success rounded-pill px-3" type="button"><a
+            href="/plan_trip/reserve_transfer_train">기차</a></button>
     <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">항공</a></button>
     <button class="btn btn-warning rounded-pill px-3" type="button"><a
             href="/plan_trip/reserve_transfer_car">렌트카</a></button>
 </div>
 
 <div>
-    <button type="button" class="">뒤로가기</button>
-    <button type="button" class="">건너뛰기</button>
-    <button type="button" class="">다음</button>
+    <form>
+        <button formaction="/" class="">뒤로가기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">건너뛰기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">다음</button>
+    </form>
 </div>
 
 <div class="selector_box">
@@ -42,51 +45,49 @@
                 <div class="rentcar_date_info col-md-6">
                     <h1>코레일</h1>
                 </div>
-                <div class="rentcar_price_info col-md-3">
+                <div class="rentcar_price_info col-md-3 mb-2">
                     <div style="border-style: ridge;">구분 : {{dict_train.train_category}}</div>
                     <div style="border-style: ridge;">열차번호 : {{dict_train.train_number}}</div>
                 </div>
             </div>
             <div class="row justify-content-between">
                 <h3 class="col-md-4" style="border-style: ridge;"></h3>
-                <div class="col-md-4">
-                    <em style="font-size:x-large;"></em>
+                <div class="col-md-4 justify-content-end row">
+                    <button class="btn btn-primary col"> 예약 내역에 추가</button>
                 </div>
+
             </div>
         </div>
     </div>
-
-
     {%endfor%}
     <div>
-        <h2>normal paginations 총 수: {{pagination.total_records}}</h2>
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item {{ '' if pagination.has_previous_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{pagination.first_page}}">
+                        formaction="/plan_trip/reserve_transfer_train/{{pagination.first_page}}">
                         맨 처음
                     </button>
 
                 </li>
                 <li class="page-item {{ '' if pagination.has_previous_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{pagination.previous_page}}">이전</button>
+                        formaction="/plan_trip/reserve_transfer_train/{{pagination.previous_page}}">이전</button>
                 </li>
                 {% for page_num in pagination.current_page_range %}
                 <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
-                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_car/{{ page_num }}">
+                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_train/{{ page_num }}">
                         {{page_num}}
                     </button>
                 </li>
                 {% endfor %}
                 <li class="page-item {{ '' if pagination.has_next_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{ pagination.next_page }}">다음</button>
+                        formaction="/plan_trip/reserve_transfer_train/{{ pagination.next_page }}">다음</button>
                 </li>
                 <li class="page-item {{ '' if pagination.has_next_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{ pagination.last_page }}">
+                        formaction="/plan_trip/reserve_transfer_train/{{ pagination.last_page }}">
                         맨 끝
                     </button>
                 </li>
