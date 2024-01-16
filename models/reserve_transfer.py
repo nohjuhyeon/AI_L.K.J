@@ -39,3 +39,11 @@ class transfer_bus_list(Document): # 상속을 위한 것                 # 데�
     bus_direction: Optional[str] = None    
     class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
         name = "reserve_transfer_bus" # collection의 이름
+        
+class tour_list(Document): # 상속을 위한 것                 # 데이터 베이스에서 이용할 값들을 설정
+    tour_image: Optional[str] = None
+    tour_name: Optional[str] = None
+    tour_content: Optional[str] = None
+    tour_price: Optional[str] = None
+    class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
+        name = "reserve_tour" # collection의 이름
