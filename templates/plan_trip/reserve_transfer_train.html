@@ -8,16 +8,19 @@
 <div class="d-flex gap-2 justify-content-center py-5">
     <button class="btn btn-primary rounded-pill px-3" type="button">전체</button><button
         class="btn btn-info rounded-pill px-3" type="button"><a href="">고속버스</a></button>
-    <button class="btn btn-success rounded-pill px-3" type="button"><a href="/plan_trip/reserve_transfer_train">기차</a></button>
+    <button class="btn btn-success rounded-pill px-3" type="button"><a
+            href="/plan_trip/reserve_transfer_train">기차</a></button>
     <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">항공</a></button>
     <button class="btn btn-warning rounded-pill px-3" type="button"><a
             href="/plan_trip/reserve_transfer_car">렌트카</a></button>
 </div>
 
 <div>
-    <button type="button" class="">뒤로가기</button>
-    <button type="button" class="">건너뛰기</button>
-    <button type="button" class="">다음</button>
+    <form>
+        <button formaction="/" class="">뒤로가기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">건너뛰기</button>
+        <button formaction="/plan_trip/reserve_dorm" class="">다음</button>
+    </form>
 </div>
 
 <div class="selector_box">
