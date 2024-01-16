@@ -182,17 +182,17 @@ async def list_post(request:Request):
     return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request})
 
 ## 투어 예약
-@router.post("/reserve_tour") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
+# @router.post("/reserve_tour") # 펑션 호출 방식
+# async def list_post(request:Request):
+#     await request.form()
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
 
-@router.get("/reserve_tour") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
+# @router.get("/reserve_tour") # 펑션 호출 방식
+# async def list_post(request:Request):
+#     await request.form()
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
 
 @router.post("/reserve_tour") # 펑션 호출 방식
 async def list_post(request:Request):
@@ -206,14 +206,10 @@ async def list_post(request:Request):
 from typing import Optional
 @router.get("/reserve_tour/{page_number}") # 펑션 호출 방식
 @router.get("/reserve_tour") # 펑션 호출 방식
-async def list_post(request:Request, page_number: Optional[int]=1):
+async def tour_post(request:Request, page_number: Optional[int]=1):
     await request.form()
-    tour_list = await collection_tour_list.get_all()
-    total = len(tour_list)
     conditions = {}
-    print(tour_list)
     print(dict(await request.form()))
-    pagination = Paginations(total,page_number)
     tour_list_pagination, pagination = await collection_tour_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,

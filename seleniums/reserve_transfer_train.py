@@ -54,7 +54,7 @@ return_day.click()
 
 # 프레임 전환 (만약 결과가 iframe 내부에 있는 경우)
 browser.switch_to.frame("go_list")
-
+pass
 # 테이블 데이터 추출
 for row_num in range(1, 21):
     # 팝업창을 띄우는 버튼 찾기
@@ -111,7 +111,8 @@ for row_num in range(1, 21):
         "train_departure": departure_location,
         "train_departure_time": departure_time,
         "train_arrival": arrival_location,
-        "train_arrival_time": arrival_time
+        "train_arrival_time": arrival_time,
+        "transfer_cate": "train"
     }
     collection.insert_one(train_info)
 
@@ -165,7 +166,8 @@ while True:
             "train_departure": departure_location,
             "train_departure_time": departure_time,
             "train_arrival": arrival_location,
-            "train_arrival_time": arrival_time
+            "train_arrival_time": arrival_time,
+            "transfer_cate": "train"
         }
         collection.insert_one(train_info)
     try:    
@@ -226,7 +228,8 @@ for row_num in range(1, 21):
             "train_departure": departure_location,
             "train_departure_time": departure_time,
             "train_arrival": arrival_location,
-            "train_arrival_time": arrival_time
+            "train_arrival_time": arrival_time, 
+            "transfer_cate": "train"
     }
     collection.insert_one(train_info)
 
@@ -280,7 +283,8 @@ while True:
             "train_departure": departure_location,
             "train_departure_time": departure_time,
             "train_arrival": arrival_location,
-            "train_arrival_time": arrival_time
+            "train_arrival_time": arrival_time,
+            "transfer_cate": "train"
         }
         collection.insert_one(train_info)
     try:    

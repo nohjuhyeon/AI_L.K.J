@@ -5,7 +5,6 @@ def connection() :                                                              
     database = mongoClient["AI_LKJ"]
     # collection 작업
     collection = database['reserve_transfer_bus']
-    # collection.delete_many({})
     return collection
 
 # * 웹 크롤링 동작
@@ -84,6 +83,8 @@ charge_youth = "#alcnList > p > span.youth"                                     
 from selenium.common.exceptions import NoSuchElementException
 import pyautogui
 
+collection_connection = connection()
+collection_connection.delete_many({})
 def depart() :
     from selenium.common.exceptions import NoSuchElementException
     import pyautogui
@@ -140,7 +141,7 @@ def depart() :
                         pass
                         collection_database = connection()
                         collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart[z], "bus_direction" : "하행",
-                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z]}) 
+                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z], "transfer_cate": "bus"}) 
 
                 
                     # 출발지 클릭 (다시 실행)
@@ -223,7 +224,7 @@ def arrive() :
                         pass
                         collection_database = connection()
                         collection_database.insert_one({"bus_departure" : result_element_name_depart , "bus_arrival" : result_element_name_arrive, "bus_departure_time" : result_element_time_depart[z], "bus_direction" : "상행",
-                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z]}) 
+                                                        "charge_adult" : result_element_charge_adult[z], "charge_child":  result_element_charge_child[z], "charge_youth" : result_element_charge_youth[z], "transfer_cate": "bus"}) 
 
 
                     # 출발지 클릭 (다시 실행)

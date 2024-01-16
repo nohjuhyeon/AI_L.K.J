@@ -102,7 +102,8 @@ for i in range(len(airport_list)) :
     collection.insert_one({"airport_image" : airport_image_list[i],
                           "airport_name" : airport_name_list[i],
                           "airport_time" : airport_time_list[i],
-                          "airport_price" : airport_price_list[i]})
+                          "airport_price" : airport_price_list[i], 
+                          "transfer_cate": "plane"})
 pass
     
 # 브라우저 종료

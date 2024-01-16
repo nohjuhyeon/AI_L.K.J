@@ -73,7 +73,9 @@ for element_one in element_list:
         collection.insert_one({"car_name": car_name.text,
                                "car_image": car_image,
                                "store_name" : store_name.text,
-                               "car_price": car_price.text})
+                               "car_price": car_price.text, 
+                               "transfer_cate": "car"
+                               })
         pass
 
 browser.quit()                                      # - 브라우저 종료
