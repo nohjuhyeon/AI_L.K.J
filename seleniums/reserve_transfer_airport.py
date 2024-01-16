@@ -54,8 +54,8 @@ airport_time_list = []
 airport_content_list = []
 for airport_item in airport_list :
     try :
-        airport_image = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > a > div.airlineImageWrapper > img")
-        str_airport_image = airport_image.text
+        airport_tag = airport_item.find_element(by=By.CSS_SELECTOR, value = "div > a > div.airlineImageWrapper > img")
+        str_airport_image= airport_tag.get_attribute('src')
         pass
     except :
         str_airport_image = ""

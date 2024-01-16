@@ -52,18 +52,18 @@ return_month.click()
 return_day = browser.find_element(By.CSS_SELECTOR, "#selComeDay > option:nth-child(25)")
 return_day.click()
 
-# 조회 버튼 클릭
-search_button = browser.find_element(By.CSS_SELECTOR, "#contents > div.content > form:nth-child(2) > div > div.ticket_box.rtm > p > a > img")
-search_button.click()
-
-# 페이지 로딩 대기
-time.sleep(5)
-
 # 프레임 전환 (만약 결과가 iframe 내부에 있는 경우)
 browser.switch_to.frame("go_list")
 
 # 테이블 데이터 추출
-for row_num in range(1, 21): 
+for row_num in range(1, 21):
+    # 팝업창을 띄우는 버튼 찾기
+    button_selector = f'#tableResult > tbody > tr:nth-child({row_num}) > td:nth-child(11) > a > img'
+    button = browser.find_element(By.CSS_SELECTOR, button_selector)
+    button.click() 
+
+    time.sleep(5)
+
     # CSS 선택자를 사용해 특정 셀 추출
     category_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td:nth-child(1)"
     departure_selector = f"#tableResult > tbody > tr:nth-child({row_num}) > td:nth-child(3)"

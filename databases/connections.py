@@ -1,7 +1,8 @@
 from typing import Any, List, Optional
 from beanie import init_beanie, PydanticObjectId
 from models.user_list import User_list
-from models.reserve_transfer import transfer_car_list, transfer_train_list
+from models.reserve_transfer import transfer_car_list, transfer_train_list,transfer_airport_list
+from models.tour_plan import reco_trip_plan
 from motor.motor_asyncio import AsyncIOMotorClient 
 from pydantic_settings import BaseSettings 
 from utils.paginations import Paginations
