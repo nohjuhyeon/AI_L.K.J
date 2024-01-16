@@ -5,9 +5,9 @@
         {%for concept in concept_list%}
         <div class="container p-4 my-3 alert" style="border: 1px solid #007bff;border-radius: 10px;">
             <div class="row">
-                <h3 class="col">CONCEPT {{loop.index0+1}} : {{concept}}</h3>
+                <h3 class="col">CONCEPT {{concept.concept_number}} : {{concept.concept_name}}</h3>
                 <button class="btn btn-outline-primary col-md-3" style="height: 100%;" formaction="/plan_trip/trip_plan/"
-                    name="trip_concept" value={{loop.index0+1}} formmethod="">계획 짜러 가기</button>
+                    name="trip_concept" value={{concept.concept_number}} formmethod="">계획 짜러 가기</button>
             </div>
         </div>
         {%endfor%}
