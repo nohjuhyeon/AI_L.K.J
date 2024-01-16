@@ -9,7 +9,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
-from models.reserve_transfer_car import transfer_car_list,transfer_train_list
+from models.reserve_transfer import transfer_car_list,transfer_train_list
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
 
