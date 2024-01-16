@@ -85,6 +85,8 @@ from selenium.common.exceptions import NoSuchElementException
 import pyautogui
 
 def depart() :
+    from selenium.common.exceptions import NoSuchElementException
+    import pyautogui
     element_day_calender.click()    # 달력 누르기
     time.sleep(2)
     element_day_twenty = browser.find_element(by = By.CSS_SELECTOR, value = day_twenty)
@@ -111,38 +113,36 @@ def depart() :
                 element_search.click()   # 조회하기 클릭
                 time.sleep(2)
 
-                element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
-                element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
-                element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
-                for element_time in element_time_depart :
-                    element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)  
+                try : 
+                    element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
                     element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
                     element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                    element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                    element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                    element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
-                    
-                    result_element_name_depart = element_name_depart.text
-                    result_element_name_arrive = element_name_arrive.text
-                    result_element_time_depart = element_time.text 
-                    result_element_charge_adult = element_charge_adult.text
-                    result_element_charge_child = element_charge_child.text
-                    result_element_charge_youth = element_charge_youth.text
+                    # element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                    # element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                    # element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
+                    for element_time in element_time_depart :
+                        element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)  
+                        element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+                        # element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+                        # element_charge_adult = browser.find_elements(by = By.CSS_SELECTOR, value = charge_adult)
+                        # element_charge_child = browser.find_elements(by = By.CSS_SELECTOR, value = charge_child)
+                        # element_charge_youth = browser.find_elements(by = By.CSS_SELECTOR, value = charge_youth)
+                        
+                        result_element_name_depart = element_name_depart.text
+                        result_element_name_arrive = element_name_arrive.text
+                        result_element_time_depart = element_time.text 
+                        # result_element_charge_adult = element_charge_adult.text
+                        # result_element_charge_child = element_charge_child.text
+                        # result_element_charge_youth = element_charge_youth.text
 
+                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
+                        # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
+                        pass
+                        # collection_database = connection()
+                        # collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart, 
+                        #                                 "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth})
 
-
-                    
-                    print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
-                    print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
-                    pass
-                    # collection_database = connection()
-                    # collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart, 
-                    #                                 "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth})
-
-                try : 
+                
                     # 출발지 클릭 (다시 실행)
                     element_button_depart.click() 
                     time.sleep(1)
@@ -169,6 +169,8 @@ def depart() :
 
 
 def arrive() :
+    from selenium.common.exceptions import NoSuchElementException
+    import pyautogui
     element_day_calender.click()    # 달력 누르기
     time.sleep(2)
     element_day_twentyfive = browser.find_element(by = By.CSS_SELECTOR, value = day_twentyfive)
@@ -192,38 +194,40 @@ def arrive() :
                 element_search.click()   # 조회하기 클릭
                 time.sleep(2)
 
-                element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
-                element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
-                element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
-                for element_time in element_time_depart :
-                    element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)  
-                    element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
-                    element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
-                    element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
-                    element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
-                    element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
-                    
-                    result_element_name_depart = element_name_depart.text
-                    result_element_name_arrive = element_name_arrive.text
-                    result_element_time_depart = element_time.text 
-                    result_element_charge_adult = element_charge_adult.text
-                    result_element_charge_child = element_charge_child.text
-                    result_element_charge_youth = element_charge_youth.text
-
-
-
-                    
-                    print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
-                    print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
-                    pass
-                    # collection_database = connection()
-                    # collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart, 
-                    #                                 "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth})
 
                 try : 
+                    element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)           #데이터 출력
+                    element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+                    element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+                    # element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
+                    # element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
+                    # element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
+                    for element_time in element_time_depart :
+                        element_name_depart = browser.find_element(by = By.CSS_SELECTOR, value = name_depart)  
+                        element_name_arrive = browser.find_element(by = By.CSS_SELECTOR, value = name_arrive)
+                        element_time_depart = browser.find_elements(by = By.CSS_SELECTOR, value = time_depart)
+                        # element_charge_adult = browser.find_element(by = By.CSS_SELECTOR, value = charge_adult)
+                        # element_charge_child = browser.find_element(by = By.CSS_SELECTOR, value = charge_child)
+                        # element_charge_youth = browser.find_element(by = By.CSS_SELECTOR, value = charge_youth)
+                        
+                        result_element_name_depart = element_name_depart.text
+                        result_element_name_arrive = element_name_arrive.text
+                        result_element_time_depart = element_time.text 
+                        # result_element_charge_adult = element_charge_adult.text
+                        # result_element_charge_child = element_charge_child.text
+                        # result_element_charge_youth = element_charge_youth.text
+
+
+
+                        
+                        print("출발지 : {}, 도착지 : {}, 출발시간 : {}".format(result_element_name_depart,result_element_name_arrive,result_element_time_depart))
+                        # print("어른요금 : {}, 초등생요금 : {}, 중고생요금 : {}".format(result_element_charge_adult,result_element_charge_child,result_element_charge_youth))
+                        pass
+                        collection_database = connection()
+                        collection_database.insert_one({"출발지" : result_element_name_depart , "도착지" : result_element_name_arrive, "출발시간" : result_element_time_depart}) 
+                                                        # "고속사" : element_bus_group, "어른요금" : element_charge_adult, "초등생요금":  element_charge_child, "중고생요금" : element_charge_youth}
+
+
                     # 출발지 클릭 (다시 실행)
                     element_button_depart.click() 
                     time.sleep(1)
