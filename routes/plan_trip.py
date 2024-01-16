@@ -210,7 +210,7 @@ async def list_post(request:Request, page_number: Optional[int]=1):
     await request.form()
     tour_list = await collection_tour_list.get_all()
     total = len(tour_list)
-    conditions = { }
+    conditions = {}
     print(tour_list)
     print(dict(await request.form()))
     pagination = Paginations(total,page_number)
