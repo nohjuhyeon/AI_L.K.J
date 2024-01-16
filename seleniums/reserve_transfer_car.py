@@ -13,8 +13,8 @@ mongoClient = MongoClient("mongodb://192.168.10.240:27017/")
 # database 연결
 database = mongoClient["AI_LKJ"]
 # collection 작업
-collection = database['reserve_transfer_car']
-collection.delete_many({})
+collection = database['reserve_transfer_total']
+# collection.delete_many({})
 
 
 # Chrome 브라우저 옵션 생성

@@ -84,7 +84,7 @@ from selenium.common.exceptions import NoSuchElementException
 import pyautogui
 
 collection_connection = connection()
-collection_connection.delete_many({})
+collection_connection.collection.delete_many({})
 def depart() :
     from selenium.common.exceptions import NoSuchElementException
     import pyautogui
