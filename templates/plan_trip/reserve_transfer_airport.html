@@ -8,8 +8,10 @@
 <div class="d-flex gap-2 justify-content-center py-5">
     <button class="btn btn-primary rounded-pill px-3" type="button">전체</button><button
         class="btn btn-info rounded-pill px-3" type="button"><a href="">고속버스</a></button>
-    <button class="btn btn-success rounded-pill px-3" type="button"><a href="/plan_trip/reserve_transfer_train">기차</a></button>
-    <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">항공</a></button>
+    <button class="btn btn-success rounded-pill px-3" type="button">
+        <a href="/plan_trip/reserve_transfer_train">기차</a></button>
+    <button class="btn btn-danger rounded-pill px-3" type="button">
+        <a href="/plan_trip/reserve_transfer_airport">항공</a></button>
     <button class="btn btn-warning rounded-pill px-3" type="button"><a
             href="/plan_trip/reserve_transfer_car">렌트카</a></button>
 </div>
@@ -31,23 +33,23 @@
         </select></div>
 </div>
 <form>
-    {%for dict_airpost in airpost_list%}
+    {%for dict_airport in airport_list%}
     <div class="row">
         <div class="col-md-3" style="border-style: ridge;">
-            <img src={{dict_airpost.airpost_image}} alt="Tour Image" style="width: 100%;">
+            <img src={{dict_airport.airport_image}} alt="Tour Image" style="width: 100%;">
 
         </div>
         <div class="col-md-9" style="border-style: ridge;">
             <div class="row justify-content-between">
                 <div class="rentcar_date_info col-md-6">
-                    <h1>{{dict_airpost.store_name}}</h1>
+                    <h1>{{dict_airport.store_name}}</h1>
                 </div>
                 <div class="rentcar_price_info col-md-3">
-                    <em style="font-size:x-large;">{{dict_airpost.airpost_price}}</em>
+                    <em style="font-size:x-large;">{{dict_airport.airport_price}}</em>
                 </div>
             </div>
             <div class="row justify-content-between">
-                <h3 class="col-md-4" style="border-style: ridge;">{{dict_airpost.airpost_name}}</h3>
+                <h3 class="col-md-4" style="border-style: ridge;">{{dict_airport.airport_name}}</h3>
                 <div class="col-md-4">
                     <div style="border-style: ridge;">상품 별점</div>
                     <div style="border-style: ridge;">상품 리뷰</div>
@@ -64,29 +66,29 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item {{ '' if pagination.has_previous_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{pagination.first_page}}">
+                        formaction="/plan_trip/reserve_transfer_airport/{{pagination.first_page}}">
                         맨 처음
                     </button>
 
                 </li>
                 <li class="page-item {{ '' if pagination.has_previous_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{pagination.previous_page}}">이전</button>
+                        formaction="/plan_trip/reserve_transfer_airport/{{pagination.previous_page}}">이전</button>
                 </li>
                 {% for page_num in pagination.current_page_range %}
                 <li class="page-item {{ 'active' if page_num == pagination.current_page else '' }}">
-                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_car/{{ page_num }}">
+                    <button type="submit" class="page-link" formaction="/plan_trip/reserve_transfer_airport/{{ page_num }}">
                         {{page_num}}
                     </button>
                 </li>
                 {% endfor %}
                 <li class="page-item {{ '' if pagination.has_next_page else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{ pagination.next_page }}">다음</button>
+                        formaction="/plan_trip/reserve_transfer_airport/{{ pagination.next_page }}">다음</button>
                 </li>
                 <li class="page-item {{ '' if pagination.has_next_block else 'disabled' }}">
                     <button type="submit" class="page-link"
-                        formaction="/plan_trip/reserve_transfer_car/{{ pagination.last_page }}">
+                        formaction="/plan_trip/reserve_transfer_airport/{{ pagination.last_page }}">
                         맨 끝
                     </button>
                 </li>
