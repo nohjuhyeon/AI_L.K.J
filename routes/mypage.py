@@ -14,17 +14,17 @@ collection_user_list = Database(User_list)
 templates = Jinja2Templates(directory="templates/")
 
 ## mypage_info
-@router.post("/info") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request})
+# @router.post("/info") # 펑션 호출 방식
+# async def list_post(request:Request):
+#     await request.form()
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request})
 
-@router.get("/info") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request})
+# @router.get("/info") # 펑션 호출 방식
+# async def list_post(request:Request):
+#     await request.form()
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request})
 
 ## mypage_insert_plan
 @router.post("/insert_plan") # 펑션 호출 방식
@@ -98,7 +98,7 @@ async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
     print(user_dict)
     return templates.TemplateResponse("mypage/mypage_main.html",{'request':request,
                                                    'user_dict': user_dict})
-
+@router.post("/info") # 펑션 호출 방식
 @router.post("/info/{object_id}") # 펑션 호출 방식
 async def list_post(request:Request, object_id:PydanticObjectId):
     await request.form()
@@ -107,11 +107,13 @@ async def list_post(request:Request, object_id:PydanticObjectId):
     print(user_dict)
     return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request,
                                                                                'user_dict': user_dict})
-
+@router.get("/info") # 펑션 호출 방식
 @router.get("/info/{object_id}") # 펑션 호출 방식
 async def list_post(request:Request, object_id:PydanticObjectId):
     await request.form()
-    user_dict = await collection_user_list.get(object_id)
-    print(dict(await request.form()))
+    user_list = await collection_user_list.get_all()
+    for i in range(len(user_list)):
+        if object_id == user_list[i].id:
+            user_dict = user_list[i]
     return templates.TemplateResponse(name="mypage/mypage_info.html", context={'request':request,
                                                                                'user_dict': user_dict})
