@@ -41,16 +41,27 @@
                 </div>
                 <div class="row">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control col-8" id="email" value={{ user_dict.user_email }} 
+                    <input type="text" class="form-control col-8" id="email" value="{{ user_dict.user_email }}" 
                         required="">
-                    <button class="btn btn-primary col-1" formaction="" method="">수정</button>
+                    <button class="btn btn-primary col-1" onclick="clearInput()" formaction="" method="">수정</button>
                 </div>
+                <script>
+                    function clearInput() {
+                        document.getElementById('email').value = '';
+                    }
+                </script>
+
                 <div class="row">
                     <label for="password" class="form-label">기존 비밀번호</label>
-                    <input type="text" class="form-control col-8" id="password" value={{ user_dict.user_password }} 
+                    <input type="text" class="form-control col-8" id="password" value="{{ user_dict.user_password }} "
                         required="">
-                    <button class="btn btn-primary col-1" formaction="" method="">수정</button>
+                    <button class="btn btn-primary col-1" onclick="clearInput()" formaction="" method="">수정</button>
                 </div>
+                <script>
+                    function clearInput() {
+                        document.getElementById('password').value = '';
+                    }
+                </script>
                 <div class="row">
                     <label for="password_check" class="form-label">비밀번호 입력</label>
                     <input type="text" class="form-control col-8" id="password_check" placeholder="**********" value=""
@@ -66,17 +77,17 @@
                 <div class="row">
                     <label for="yymmdd" class="form-label">생년월일</label>
 
-                    <input type="date" class="form-control col-9" id="yymmdd" value={{ user_dict.user_birth }} required="">
+                    <input type="date" class="form-control col-9" id="yymmdd" value="{{ user_dict.user_birth }}" required="">
 
                 </div>
                 <div class="row">
                     <label for="phone" class="form-label">휴대전화번호</label>
-                    <input type="text" class="form-control col-9" id="phone" placeholder={{ user_dict.user_phone_number }} value=""
+                    <input type="text" class="form-control col-9" id="phone" value="{{ user_dict.user_phone_number }}"
                         required="">
                 </div>
                 <div class="row">
                     <label for="address" class="form-label">주소</label>
-                    <input type="text" class="form-control col-9" id="address" placeholder={{ user_dict.user_address }} value="" required="">
+                    <input type="text" class="form-control col-9" id="address" value="{{ user_dict.user_address }}"  required="">
                 </div>
                 <div></div>
                 <div></div>
