@@ -11,6 +11,7 @@ templates = Jinja2Templates(directory="templates/")
 
 from databases.connections import Database
 from models.reserve_transfer import transfer_car_list,transfer_train_list,transfer_bus_list,transfer_airport_list,tour_list, transfer_total_list
+from models.reserve_dorm import Reserve_dorm
 from models.tour_plan import reco_trip_plan,reco_trip_add
 collection_transfer_car_list = Database(transfer_car_list)
 collection_transfer_train_list = Database(transfer_train_list)
@@ -20,6 +21,7 @@ collection_transfer_total_list = Database(transfer_total_list)
 collection_reco_trip_plan = Database(reco_trip_plan)
 collection_tour_list = Database(tour_list)
 collection_reco_trip_add = Database(reco_trip_add)
+collection_reserve_dorm = Database(Reserve_dorm)
 
 
 
@@ -176,14 +178,17 @@ async def list_post(request:Request, page_number: Optional[int]=1):
 @router.post("/reserve_dorm") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
+    list_dorm = collection_reserve_dorm.get_all()
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request, "list_dorm" : list_dorm})
 
 @router.get("/reserve_dorm") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
+    list_dorm = await collection_reserve_dorm.get_all()
     print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request})
+    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
+                                                                                   "list_dorm" : list_dorm})
 
 ## 투어 예약
 # @router.post("/reserve_tour") # 펑션 호출 방식
