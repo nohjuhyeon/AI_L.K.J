@@ -34,10 +34,11 @@ while True:
         motel_address = element.find_element(By.CSS_SELECTOR, 'span.aee5343fdb.def9bc142a').text
         motel_price = element.find_element(By.CSS_SELECTOR, 'span.f6431b446c.fbfd7c1165.e84eb96b1f').text
         collection.insert_one({
-            "motel_image": motel_image,
-            "motel_name": motel_name,
-            "motel_address": motel_address,
-            "motel_price": motel_price,
+            "dorm_image": motel_image,
+            "dorm_name": motel_name,
+            "dorm_address": motel_address,
+            "dorm_price": motel_price,
+            "dorm_cate": "motel"
         })
     try:
         next_button = browser.find_element(By.CSS_SELECTOR, '#bodyconstraint-inner > div:nth-child(8) > div > div.af5895d4b2 > div.df7e6ba27d > div.bcbf33c5c3 > div.dcf496a7b9.bb2746aad9 > div.d7a0553560 > div.c82435a4b8.a178069f51.a6ae3c2b40.a18aeea94d.d794b7a0f7.f53e278e95.e49b423746 > nav > nav > div > div.b16a89683f.cab1524053 > button')

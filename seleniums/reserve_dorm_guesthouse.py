@@ -11,6 +11,7 @@ collection = database['reserve_dorm']
 
 
 
+
 driver_manager_directory = ChromeDriverManager().install()
 browser = webdriver.Chrome(service=ChromeService(driver_manager_directory))
 url = "https://www.booking.com/searchresults.ko.html?ss=%EB%B6%80%EC%82%B0&ssne=%EB%B6%80%EC%82%B0&ssne_untouched=%EB%B6%80%EC%82%B0&label=Vit8GNqq0h_49era%7E9RmyvlJBF_JpBNa-QANkJ0NfLVqTd4IsK4wErA%3D%3D&aid=2210273&lang=ko&sb=1&src_elem=sb&src=searchresults&dest_id=-713900&dest_type=city&checkin=2024-01-20&checkout=2024-01-25&group_adults=4&no_rooms=1&group_children=0"
@@ -34,10 +35,11 @@ while True:
         guesthouse_address = element.find_element(By.CSS_SELECTOR, 'span.aee5343fdb.def9bc142a').text
         guesthouse_price = element.find_element(By.CSS_SELECTOR, 'span.f6431b446c.fbfd7c1165.e84eb96b1f').text
         collection.insert_one({
-            "guesthouse_image": guesthouse_image,
-            "guesthouse_name": guesthouse_name,
-            "guesthouse_address": guesthouse_address,
-            "guesthouse_price": guesthouse_price,
+            "dorm_image": guesthouse_image,
+            "dorm_name": guesthouse_name,
+            "dorm_address": guesthouse_address,
+            "dorm_price": guesthouse_price,
+            "dorm_cate": "guest_house"
         })
     try:
         next_button = browser.find_element(By.CSS_SELECTOR, '#bodyconstraint-inner > div:nth-child(8) > div > div.af5895d4b2 > div.df7e6ba27d > div.bcbf33c5c3 > div.dcf496a7b9.bb2746aad9 > div.d7a0553560 > div.c82435a4b8.a178069f51.a6ae3c2b40.a18aeea94d.d794b7a0f7.f53e278e95.e49b423746 > nav > nav > div > div.b16a89683f.cab1524053 > button')
