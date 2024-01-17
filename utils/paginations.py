@@ -35,7 +35,7 @@ class Paginations:
         self.has_previous_block = self.current_block > 1
         # 다음 블럭 존재 여부(마지막 페이지)
         self.has_next_block = True
-        self.has_next_block = 1 <= self.current_block < self.total_blocks
+        self.has_next_block = 1 <= self.current_page < self.total_pages
         # 첫 페이지
         self.first_page = 1
         # 마지막 페이지

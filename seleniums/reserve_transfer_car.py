@@ -13,8 +13,8 @@ mongoClient = MongoClient("mongodb://192.168.10.240:27017/")
 # database 연결
 database = mongoClient["AI_LKJ"]
 # collection 작업
-collection = database['reserve_transfer_car']
-collection.delete_many({})
+collection = database['reserve_transfer_total']
+# collection.delete_many({})
 
 
 # Chrome 브라우저 옵션 생성
@@ -73,7 +73,9 @@ for element_one in element_list:
         collection.insert_one({"car_name": car_name.text,
                                "car_image": car_image,
                                "store_name" : store_name.text,
-                               "car_price": car_price.text})
+                               "car_price": car_price.text, 
+                               "transfer_cate": "car"
+                               })
         pass
 
 browser.quit()                                      # - 브라우저 종료
