@@ -28,21 +28,23 @@ collection_reserve_dorm = Database(Reserve_dorm)
 
 collection_user_list = Database(User_list)
 
-
 ## 여행 계획 추천
-@router.post("/reco_trip_plan") # 펑션 호출 방식
-async def list_post(request:Request):
+@router.post("/reco_trip_plan/{object_id}") # 펑션 호출 방식
+async def list_post(request:Request, object_id:PydanticObjectId):
     await request.form()
     concept_tour = await collection_reco_trip_plan.get_all()
+    user_dict = await collection_user_list.get(object_id)
 
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request,
-                                                                                     'concept_list' : concept_tour})
+                                                                                     'concept_list' : concept_tour,
+                                                                                     'user_dict':user_dict})
 
-@router.get("/reco_trip_plan") # 펑션 호출 방식
-async def list_post(request:Request):
+@router.get("/reco_trip_plan/{object_id}") # 펑션 호출 방식
+async def list_post(request:Request, object_id:PydanticObjectId):
     await request.form()
     concept_tour = await collection_reco_trip_plan.get_all()
+    user_dict = await collection_user_list.get(object_id)
     concept_list = []
     check_concept_list = []
     for i in range(len(concept_tour)):
@@ -54,7 +56,8 @@ async def list_post(request:Request):
             pass
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/reco_trip_plan.html", context={'request':request,
-                                                                                     'concept_list' : concept_list})
+                                                                                     'concept_list' : concept_list,
+                                                                                     'user_dict': user_dict})
 
 ## 여행 계획
 @router.post("/trip_plan") # 펑션 호출 방식
@@ -63,7 +66,7 @@ async def list_post(request:Request):
     print(dict(await request.form()))
     return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request})
 
-@router.get("/trip_plan") # 펑션 호출 방식
+@router.get("/trip_plan")
 async def list_post(request:Request):
     await request.form()
     dict(request._query_params)
@@ -79,6 +82,23 @@ async def list_post(request:Request):
     return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request,
                                                                                 'tour_list': tour_list,
                                                                                 'reco_add_list': reco_add_list})
+
+@router.get("/trip_plan/{object_id}") # 펑션 호출 방식
+async def list_post(request:Request, object_id:PydanticObjectId):
+    await request.form()
+    dict(request._query_params)
+    tour_plan_list = await collection_reco_trip_plan.get_all()
+    tour_list = []
+    user_dict = await collection_user_list.get(object_id)
+    for i in range(len(tour_plan_list)):
+        if tour_plan_list[i].concept_number == dict(request._query_params)["trip_concept"]:
+            tour_list.append(tour_plan_list[i])
+    reco_add_list = await collection_reco_trip_add.get_all()
+    pass
+    return templates.TemplateResponse(name="plan_trip/trip_plan.html", context={'request':request,
+                                                                                'tour_list': tour_list,
+                                                                                'reco_add_list': reco_add_list,
+                                                                                'user_dict':user_dict})
 
 
 ## 교통 예약
@@ -224,44 +244,22 @@ async def list_get(request:Request, page_number: Optional[int]=1, ):
                                                                                            'list_dorm':dorm_list_pagination,
                                                                                            'pagination':pagination})
 
-
-#######################################################
-@router.post("/reserve_dorm") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    list_dorm = collection_reserve_dorm.get_all()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request, "list_dorm" : list_dorm})
-
-@router.get("/reserve_dorm") # 펑션 호출 방식
-async def list_post(request:Request):
-    await request.form()
-    list_dorm = await collection_reserve_dorm.get_all()
-    print(dict(await request.form()))
-    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
-                                                                                   "list_dorm" : list_dorm})
-
 ## 투어 예약
-# @router.post("/reserve_tour") # 펑션 호출 방식
-# async def list_post(request:Request):
-#     await request.form()
-#     print(dict(await request.form()))
-#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
-
-# @router.get("/reserve_tour") # 펑션 호출 방식
-# async def list_post(request:Request):
-#     await request.form()
-#     print(dict(await request.form()))
-#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request})
-
-@router.post("/reserve_tour") # 펑션 호출 방식
-async def list_post(request:Request):
+@router.get("/reserve_tour/{page_number}/{object_id}") # 펑션 호출 방식
+@router.get("/reserve_tour/{object_id}") # 펑션 호출 방식
+async def list_get(request:Request, object_id : PydanticObjectId, page_number: Optional[int]=1, ):
+    user_list = await collection_user_list.get_all()
+    for i in range(len(user_list)):
+        if object_id == user_list[i].id:
+            user_dict = user_list[i]
     await request.form()
-    tour_list = await collection_tour_list.get_all()
-    print(tour_list)
-    print(dict(await request.form()))
+    conditions = { }
+    tour_list_pagination, pagination = await collection_tour_list.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
-                                                                                           'tour_list': tour_list})
+                                                                                           'tour_list':tour_list_pagination,
+                                                                                           'pagination':pagination,
+                                                                                           'user_dict': user_dict})
 
 @router.get("/reserve_tour/{page_number}") # 펑션 호출 방식
 @router.get("/reserve_tour") # 펑션 호출 방식
@@ -274,3 +272,64 @@ async def tour_post(request:Request, page_number: Optional[int]=1):
     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
                                                                                            'tour_list':tour_list_pagination,
                                                                                            'pagination':pagination})
+
+@router.post("/reserve_tour/{page_number}/{object_id}") # 펑션 호출 방식
+@router.post("/reserve_tour/{object_id}") # 펑션 호출 방식
+async def list_get(request:Request, object_id : PydanticObjectId, page_number: Optional[int]=1, ):
+    user_list = await collection_user_list.get_all()
+    for i in range(len(user_list)):
+        if object_id == user_list[i].id:
+            user_dict = user_list[i]
+    await request.form()
+    conditions = { }
+    tour_list_pagination, pagination = await collection_tour_list.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
+                                                                                           'tour_list':tour_list_pagination,
+                                                                                           'pagination':pagination,
+                                                                                           'user_dict': user_dict})
+
+
+# @router.get("/reserve_dorm/{page_number}") # 펑션 호출 방식
+# @router.get("/reserve_dorm") # 펑션 호출 방식
+# async def list_get(request:Request, page_number: Optional[int]=1, ):
+#     dorm_type = dict(request._query_params)
+#     await request.form()
+#     conditions = { }
+#     try :
+#         search_word = dorm_type["dorm_cate"]
+#     except:
+#         search_word = None
+#     if search_word:     # 검색어 작성
+#         conditions = {"dorm_cate" : { '$regex': search_word}}
+#     dorm_list_pagination, pagination = await collection_reserve_dorm.getsbyconditionswithpagination(conditions
+#                                                                      ,page_number)
+#     return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
+#                                                                                            'list_dorm':dorm_list_pagination,
+#                                                                                            'pagination':pagination})
+
+
+
+
+
+# #######################################################
+# @router.post("/reserve_tour") # 펑션 호출 방식
+# async def list_post(request:Request):
+#     await request.form()
+#     tour_list = await collection_tour_list.get_all()
+#     print(tour_list)
+#     print(dict(await request.form()))
+#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
+#                                                                                            'tour_list': tour_list})
+
+# @router.get("/reserve_tour/{page_number}") # 펑션 호출 방식
+# @router.get("/reserve_tour") # 펑션 호출 방식
+# async def tour_post(request:Request, page_number: Optional[int]=1):
+#     await request.form()
+#     conditions = {}
+#     print(dict(await request.form()))
+#     tour_list_pagination, pagination = await collection_tour_list.getsbyconditionswithpagination(conditions
+#                                                                      ,page_number)
+#     return templates.TemplateResponse(name="plan_trip/reserve_tour.html", context={'request':request,
+#                                                                                            'tour_list':tour_list_pagination,
+#                                                                                            'pagination':pagination})

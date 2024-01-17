@@ -39,13 +39,14 @@ browser.get("https://travel.interpark.com/voucher/list?q=%EB%B6%80%EC%82%B0&disp
 pass
 # html 파일 받음(and 확인)
 html = browser.page_source
-time.sleep(2)
+time.sleep(3)
 pass
 # 정보 획득
 from selenium.webdriver.common.by import By
 import time
 
 tour_list = browser.find_elements(by=By.CSS_SELECTOR,value = "div.listProductWrap > ul > li > a")
+time.sleep(3)
 
 tour_image_list = []
 tour_name_list = []
@@ -54,7 +55,7 @@ tour_price_list = []
 for tour_item in tour_list :
     try :
         tour_tag = tour_item.find_element(by=By.CSS_SELECTOR, value="div.listProductWrap > ul > li > a > span > img")
-        str_tour_image = tour_tag.get_attribute('src')
+        str_tour_image = tour_tag.get_attribute('data-src')
         pass
     except :
         str_tour_image = ""
