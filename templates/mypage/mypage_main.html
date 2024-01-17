@@ -6,10 +6,12 @@
 <div class="row" style="text-align: center; margin-top: 20%; margin-bottom: 20%;">
     <h1>마이 페이지</h1>
     <div>
-
+        user_dict : {{user_dict}}
         <form>
             <button class="col-md-3 themed-grid-col btn btn-primary" style="font-size: 15px ; height: 100px;"
-                formaction="/mypage/info/{{user_dict.id}} if {{user_dict.id}} else ''" method="get">개인정보수정</button>
+                formaction={{ "/mypage/info/" if user_dict else "/mypage/info/" + user_dict if user_dict is defined
+                else "" }} method="get">개인정보수정</button>
+
         </form>
     </div>
 
