@@ -41,13 +41,13 @@
                 </div>
                 <div class="row">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control col-8" id="email" placeholder="example@example.com" value=""
+                    <input type="text" class="form-control col-8" id="email" placeholder={{ user_dict.user_email }} value=""
                         required="">
                     <button class="btn btn-primary col-1" formaction="" method="">수정</button>
                 </div>
                 <div class="row">
                     <label for="password" class="form-label">기존 비밀번호</label>
-                    <input type="text" class="form-control col-8" id="password" placeholder="**********" value=""
+                    <input type="text" class="form-control col-8" id="password" placeholder={{ user_dict.user_password }} value=""
                         required="">
                     <button class="btn btn-primary col-1" formaction="" method="">수정</button>
                 </div>
@@ -66,18 +66,17 @@
                 <div class="row">
                     <label for="yymmdd" class="form-label">생년월일</label>
 
-                    <input type="text" class="form-control col-3" id="yymmdd" placeholder="yy" value="" required="">
-                    <input type="text" class="form-control col-3" id="yymmdd" placeholder="mm" value="" required="">
-                    <input type="text" class="form-control col-3" id="yymmdd" placeholder="dd" value="" required="">
+                    <input type="text" class="form-control col-9" id="yymmdd" placeholder={{ user_dict.user_birth }} value="" required="">
+
                 </div>
                 <div class="row">
                     <label for="phone" class="form-label">휴대전화번호</label>
-                    <input type="text" class="form-control col-9" id="phone" placeholder="0123456789" value=""
+                    <input type="text" class="form-control col-9" id="phone" placeholder={{ user_dict.user_phone_number }} value=""
                         required="">
                 </div>
                 <div class="row">
                     <label for="address" class="form-label">주소</label>
-                    <input type="text" class="form-control col-9" id="address" placeholder="주소" value="" required="">
+                    <input type="text" class="form-control col-9" id="address" placeholder={{ user_dict.user_address }} value="" required="">
                 </div>
                 <div></div>
                 <div></div>
