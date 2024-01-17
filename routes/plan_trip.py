@@ -156,6 +156,7 @@ async def list_get(request:Request, page_number: Optional[int]=1, ):
                                                                                            'total_list':total_list_pagination,
                                                                                            'pagination':pagination})
 
+
 ## 숙소 예약
 @router.post("/reserve_dorm") # 펑션 호출 방식
 async def list_post(request:Request):
