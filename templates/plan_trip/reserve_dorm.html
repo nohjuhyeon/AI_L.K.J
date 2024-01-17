@@ -3,33 +3,44 @@
 <div class="col-md-3" style="border-style: ridge;">
     숙박
 </div>
+<form action="">
+    <div class="d-flex gap-2 justify-content-center py-5">
+        <div class="col-6">
+            <select class="form-control" name="dorm_cate">
+                <option value="" {{ 'selected' if request._query_params.dorm_cate=='' else '' }}>전체</option>
+                <option value="hotel" {{ 'selected' if request._query_params.dorm_cate=='hotel' else '' }}>호텔</option>
+                <option value="motel" {{ 'selected' if request._query_params.dorm_cate=='motel' else '' }}>모텔</option>
+                <option value="guest_house" {{ 'selected' if request._query_params.dorm_cate=='guest_house' else '' }}>
+                    게스트하우스
+                </option>
+            </select>
+        </div>
+        <div class="col-1">
+            <button type="submit" class="btn btn-primary" formaction="/plan_trip/reserve_dorm/{{user_dict.id}}"
+                formmethod="get">검색</button>
+        </div>
 
-<div class="d-flex gap-2 justify-content-center py-5">
-    <button class="btn btn-primary rounded-pill px-3" type="button">전체</button>
-    <button class="btn btn-info rounded-pill px-3" type="button"><a href="">호텔</a></button>
-    <button class="btn btn-success rounded-pill px-3" type="button"><a href="">모텔</a></button>
-    <button class="btn btn-danger rounded-pill px-3" type="button"><a href="">게스트하우스</a></button>
-</div>
+    </div>
 
-<div>
-    <form>
-        <button formaction="/plan_trip/reserve_transfer" class="">뒤로가기</button>
-        <button formaction="/plan_trip/reserve_tour" class="">건너뛰기</button>
-        <button formaction="/plan_trip/reserve_tour" class="">다음</button>
-    </form>
-</div>
+    <div>
+        <form>
+            <button formaction="/plan_trip/reserve_transfer" class="">뒤로가기</button>
+            <button formaction="/plan_trip/reserve_tour" class="">건너뛰기</button>
+            <button formaction="/plan_trip/reserve_tour" class="">다음</button>
+        </form>
+    </div>
 
-<div class="selector_box">
-    <div class="border d-flex justify-content-end"><select id="">
-            <option>selector</option>
-            <option value="0">낮은가격순</option>
-            <option value="1">높은가격순</option>
-            <option value="2">가장 가까운 거리순</option>
-        </select></div>
-</div>
-{%for dict_dorm in list_dorm%}
+    <div class="selector_box">
+        <div class="border d-flex justify-content-end"><select id="">
+                <option>selector</option>
+                <option value="0">낮은가격순</option>
+                <option value="1">높은가격순</option>
+                <option value="2">가장 가까운 거리순</option>
+            </select></div>
+    </div>
+    {%for dict_dorm in list_dorm%}
     <div class="row align-items-stretch mb-3" style="border: 1px solid #555; border-radius: 15px; height: 70%;">
-        <div class="col-md-3" style="border-right: 1px solid #555;"> 
+        <div class="col-md-3" style="border-right: 1px solid #555;">
             <img src="{{dict_dorm.dorm_image}}" alt="Dorm Image" class="img-fluid" style="width: 100%; height: auto;">
         </div>
         <div class="col-md-9 d-flex flex-column justify-content-center">
@@ -38,8 +49,55 @@
                 <h2>{{dict_dorm.dorm_name}}</h2>
                 <h2>{{dict_dorm.dorm_price}}</h2>
             </div>
-            <div style="margin-top: 10px;">{{dict_dorm.dorm_address}}</div> <!-- 아래로 이동 -->
+
+            <div class=" justify-content-between row">
+                <div class="col-md-4" style="margin-top: 10px;">{{dict_dorm.dorm_address}}</div> <!-- 아래로 이동 -->
+                <button class="btn btn-primary col-md-3"> 예약 내역에 추가</button>
+            </div>
         </div>
     </div>
-{%endfor%}
+    {%endfor%}
+    <div>
+        <h2>normal paginations 총 수: {{pagination.total_records}}</h2>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {% if not pagination.has_previous_block %}disabled{% endif %}">
+                    <button type="submit" class="page-link"
+                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.first_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.first_page}}/{{user_dict.id|string}}{% endif %}">
+                        맨 처음
+                    </button>
+                </li>
+                <li class="page-item {% if not pagination.has_previous_page %}disabled{% endif %}">
+                    <button type="submit" class="page-link"
+                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.previous_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.previous_page}}/{{user_dict.id|string}}{% endif %}">
+                        이전
+                    </button>
+                </li>
+
+                {% for page_num in pagination.current_page_range %}
+                <li class="page-item {% if page_num == pagination.current_page %}active{% endif %}">
+                    <button type="submit" class="page-link"
+                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{page_num}}{% else %}/plan_trip/reserve_dorm/{{page_num}}/{{user_dict.id|string}}{% endif %}">
+                        {{page_num}}
+                    </button>
+                </li>
+                {% endfor %}
+
+                <li class="page-item {% if not pagination.has_next_page %}disabled{% endif %}">
+                    <button type="submit" class="page-link"
+                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.next_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.next_page}}/{{user_dict.id|string}}{% endif %}">
+                        다음
+                    </button>
+                </li>
+                <li class="page-item {% if not pagination.has_next_block %}disabled{% endif %}">
+                    <button type="submit" class="page-link"
+                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.last_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.last_page}}/{{user_dict.id|string}}{% endif %}">
+                        맨 끝
+                    </button>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</form>
 {%endblock%}

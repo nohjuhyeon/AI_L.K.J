@@ -136,7 +136,7 @@ async def list_get(request:Request, object_id : PydanticObjectId, page_number: O
     total_list_pagination, pagination = await collection_transfer_total_list.getsbyconditionswithpagination(conditions
                                                                      ,page_number)
     return templates.TemplateResponse(name="plan_trip/reserve_transfer.html", context={'request':request,
-                                                                                           'total_list':total_list_pagination,
+                                                                                            'total_list':total_list_pagination,
                                                                                            'pagination':pagination,
                                                                                            'user_dict': user_dict})
 
@@ -160,6 +160,72 @@ async def list_get(request:Request, page_number: Optional[int]=1, ):
 
 
 ## 숙소 예약
+@router.get("/reserve_dorm/{page_number}/{object_id}") # 펑션 호출 방식
+@router.get("/reserve_dorm/{object_id}") # 펑션 호출 방식
+async def list_get(request:Request, object_id : PydanticObjectId, page_number: Optional[int]=1, ):
+    user_list = await collection_user_list.get_all()
+    for i in range(len(user_list)):
+        if object_id == user_list[i].id:
+            user_dict = user_list[i]
+    dorm_type = dict(request._query_params)
+    await request.form()
+    conditions = { }
+    try :
+        search_word = dorm_type["dorm_cate"]
+    except:
+        search_word = None
+    if search_word:     # 검색어 작성
+        conditions = {"dorm_cate" : { '$regex': search_word}}
+    dorm_list_pagination, pagination = await collection_reserve_dorm.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
+                                                                                           'list_dorm':dorm_list_pagination,
+                                                                                           'pagination':pagination,
+                                                                                           'user_dict': user_dict})
+
+@router.post("/reserve_dorm/{page_number}/{object_id}") # 펑션 호출 방식
+@router.post("/reserve_dorm/{object_id}") # 펑션 호출 방식
+async def list_get(request:Request, object_id : PydanticObjectId, page_number: Optional[int]=1, ):
+    user_list = await collection_user_list.get_all()
+    for i in range(len(user_list)):
+        if object_id == user_list[i].id:
+            user_dict = user_list[i]
+    dorm_type = dict(await request.form())
+    await request.form()
+    conditions = { }
+    try :
+        search_word = dorm_type["dorm_cate"]
+    except:
+        search_word = None
+    if search_word:     # 검색어 작성
+        conditions = {"dorm_cate" : { '$regex': search_word}}
+    dorm_list_pagination, pagination = await collection_reserve_dorm.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
+                                                                                           'list_dorm':dorm_list_pagination,
+                                                                                           'pagination':pagination,
+                                                                                           'user_dict': user_dict})
+
+@router.get("/reserve_dorm/{page_number}") # 펑션 호출 방식
+@router.get("/reserve_dorm") # 펑션 호출 방식
+async def list_get(request:Request, page_number: Optional[int]=1, ):
+    dorm_type = dict(request._query_params)
+    await request.form()
+    conditions = { }
+    try :
+        search_word = dorm_type["dorm_cate"]
+    except:
+        search_word = None
+    if search_word:     # 검색어 작성
+        conditions = {"dorm_cate" : { '$regex': search_word}}
+    dorm_list_pagination, pagination = await collection_reserve_dorm.getsbyconditionswithpagination(conditions
+                                                                     ,page_number)
+    return templates.TemplateResponse(name="plan_trip/reserve_dorm.html", context={'request':request,
+                                                                                           'list_dorm':dorm_list_pagination,
+                                                                                           'pagination':pagination})
+
+
+#######################################################
 @router.post("/reserve_dorm") # 펑션 호출 방식
 async def list_post(request:Request):
     await request.form()
