@@ -41,13 +41,13 @@
                 </div>
                 <div class="row">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control col-8" id="email" placeholder={{ user_dict.user_email }} value=""
+                    <input type="text" class="form-control col-8" id="email" value={{ user_dict.user_email }} 
                         required="">
                     <button class="btn btn-primary col-1" formaction="" method="">수정</button>
                 </div>
                 <div class="row">
                     <label for="password" class="form-label">기존 비밀번호</label>
-                    <input type="text" class="form-control col-8" id="password" placeholder={{ user_dict.user_password }} value=""
+                    <input type="text" class="form-control col-8" id="password" value={{ user_dict.user_password }} 
                         required="">
                     <button class="btn btn-primary col-1" formaction="" method="">수정</button>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <label for="yymmdd" class="form-label">생년월일</label>
 
-                    <input type="text" class="form-control col-9" id="yymmdd" placeholder={{ user_dict.user_birth }} value="" required="">
+                    <input type="date" class="form-control col-9" id="yymmdd" value={{ user_dict.user_birth }} required="">
 
                 </div>
                 <div class="row">
