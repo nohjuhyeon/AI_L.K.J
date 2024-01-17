@@ -54,9 +54,10 @@
 
 ### #참조 사이트
 
-<p> [부트스트랩](https://getbootstrap.kr/docs/5.3/examples/) </p>
-<p> [항공 예약 페이지](https://flight-web.yanolja.com/flights/list?departurePlaceTypeCode=CITY&departurePlaceCode=SEL&arrivalPlaceTypeCode=CITY&arrivalPlaceCode=PUS&cabinClasses=ECONOMY,BUSINESS&adultsCount=4&outboundDepartureDate=2024-01-20) </p>
-<p> [버스 예약 페이지](https://www.kobus.co.kr/oprninf/alcninqr/oprnAlcnPage.do) </p>
-<p> [렌트카 예약 페이지](https://rent-car.zzimcar.com/home) </p>
-<p> [기차 예약 페이지](https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21112.do) </p>
-<p> [] </p>
+|구분|페이지명|
+|부트스트랩|[부트스트랩](https://getbootstrap.kr/docs/5.3/examples/)|
+|항공 예약 페이지|[야놀자-항공](https://flight-web.yanolja.com/flights/list?departurePlaceTypeCode=CITY&departurePlaceCode=SEL&arrivalPlaceTypeCode=CITY&arrivalPlaceCode=PUS&cabinClasses=ECONOMY,BUSINESS&adultsCount=4&outboundDepartureDate=2024-01-20)|
+|버스 예약 페이지|[고속버스통합예매](https://www.kobus.co.kr/oprninf/alcninqr/oprnAlcnPage.do)|
+|렌트카 예약 페이지|[찜카](https://rent-car.zzimcar.com/home)|
+|기차 예약 페이지|[코레일](https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21112.do)|
+|||
