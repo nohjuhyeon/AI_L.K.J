@@ -11,6 +11,7 @@ class User_list(Document): # 상속을 위한 것                 # 데이터 �
     user_birth : Optional[str] = None
     user_phone_number : Optional[str] = None
     user_address : Optional[str] = None
+    user_img : Optional[bytes] = None
     class Settings:                             # 데이터 베이스에서 이용할 collection을 지정
         name = "user_list" # collection의 이름
   
