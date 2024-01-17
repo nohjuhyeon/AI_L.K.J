@@ -18,3 +18,10 @@ class User_list(Document): # 상속을 위한 것                 # 데이터 �
   # beanie는 mongoDB를 비동기적으로 다루기 위한 라이브러리
         
 
+class User_reserve_list(Document):
+    user_id : Optional[str] = None
+    transfer_id : Optional[str] = None
+    dorm_id : Optional[str] = None
+    tour_id : Optional[str] = None
+    class Settings:
+        name = "user_reserve_list"
