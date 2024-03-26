@@ -171,38 +171,38 @@ async def insert_post(request:Request):
 
 ## 로그인 완료 시 
 
-# 메인 페이지로 이동
-@app.get("/{object_id}")                     
-async def login_main_get(request:Request, object_id:PydanticObjectId):
-    print(dict(request._query_params))
-    user_dict = await collection_user_list.get(object_id)
-    print(user_dict)
-    return templates.TemplateResponse("main.html",{'request':request,
-                                                   'user_dict': user_dict})
+# # 메인 페이지로 이동
+# @app.get("/{object_id}")                     
+# async def login_main_get(request:Request, object_id:PydanticObjectId):
+#     print(dict(request._query_params))
+#     user_dict = await collection_user_list.get(object_id)
+#     print(user_dict)
+#     return templates.TemplateResponse("main.html",{'request':request,
+#                                                    'user_dict': user_dict})
 
-@app.post("/{object_id}")                      
-async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
-    await request.form()
-    print(dict(await request.form()))
-    user_dict = await collection_user_list.get(object_id)
-    print(user_dict)
-    return templates.TemplateResponse("main.html",{'request':request,
-                                                   'user_dict': user_dict})
+# @app.post("/{object_id}")                      
+# async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
+#     await request.form()
+#     print(dict(await request.form()))
+#     user_dict = await collection_user_list.get(object_id)
+#     print(user_dict)
+#     return templates.TemplateResponse("main.html",{'request':request,
+#                                                    'user_dict': user_dict})
 
-# 여행기로 이동
-@app.get("/community/{object_id}")                     
-async def login_main_get(request:Request, object_id:PydanticObjectId):
-    print(dict(request._query_params))
-    user_dict = await collection_user_list.get(object_id)
-    print(user_dict)
-    return templates.TemplateResponse("community.html",{'request':request,
-                                                   'user_dict': user_dict})
+# # 여행기로 이동
+# @app.get("/community/{object_id}")                     
+# async def login_main_get(request:Request, object_id:PydanticObjectId):
+#     print(dict(request._query_params))
+#     user_dict = await collection_user_list.get(object_id)
+#     print(user_dict)
+#     return templates.TemplateResponse("community.html",{'request':request,
+#                                                    'user_dict': user_dict})
 
-@app.post("/community/{object_id}")                      
-async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
-    await request.form()
-    print(dict(await request.form()))
-    user_dict = await collection_user_list.get(object_id)
-    print(user_dict)
-    return templates.TemplateResponse("community.html",{'request':request,
-                                                   'user_dict': user_dict})
+# @app.post("/community/{object_id}")                      
+# async def lgoin_main_post(request:Request, object_id:PydanticObjectId):
+#     await request.form()
+#     print(dict(await request.form()))
+#     user_dict = await collection_user_list.get(object_id)
+#     print(user_dict)
+#     return templates.TemplateResponse("community.html",{'request':request,
+#                                                    'user_dict': user_dict})

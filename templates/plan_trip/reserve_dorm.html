@@ -16,15 +16,15 @@
             </select>
         </div>
         <div class="col-1">
-            <button type="submit" class="btn btn-primary" formaction="/plan_trip/reserve_dorm/{{user_dict.id}}"
+            <button type="submit" class="btn btn-primary" formaction="/plan_trip/reserve_dorm/"
                 formmethod="get">검색</button>
         </div>
 
     </div>
     <div class="row justify-content-center">
-        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_transfer/{{user_dict.id}}" class="">뒤로가기</button>
-        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_tour/{{user_dict.id}}" class="">건너뛰기</button>
-        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_tour/{{user_dict.id}}" type="submit" class="">다음</button>
+        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_transfer/" class="">뒤로가기</button>
+        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_tour/" class="">건너뛰기</button>
+        <button class="col-2 m-2 mt-5 mb-2" formaction="/plan_trip/reserve_tour/" type="submit" class="">다음</button>
     </div>
     <div class="selector_box">
         <div class="border d-flex justify-content-end"><select id="">
@@ -59,13 +59,13 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item {% if not pagination.has_previous_block %}disabled{% endif %}">
                     <button type="submit" class="page-link"
-                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.first_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.first_page}}/{{user_dict.id|string}}{% endif %}">
+                        formaction="/plan_trip/reserve_dorm/{{pagination.first_page}}">
                         맨 처음
                     </button>
                 </li>
                 <li class="page-item {% if not pagination.has_previous_page %}disabled{% endif %}">
                     <button type="submit" class="page-link"
-                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.previous_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.previous_page}}/{{user_dict.id|string}}{% endif %}">
+                        formaction="/plan_trip/reserve_dorm/{{pagination.previous_page}}">
                         이전
                     </button>
                 </li>
@@ -73,7 +73,7 @@
                 {% for page_num in pagination.current_page_range %}
                 <li class="page-item {% if page_num == pagination.current_page %}active{% endif %}">
                     <button type="submit" class="page-link"
-                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{page_num}}{% else %}/plan_trip/reserve_dorm/{{page_num}}/{{user_dict.id|string}}{% endif %}">
+                        formaction="/plan_trip/reserve_dorm/{{page_num}}">
                         {{page_num}}
                     </button>
                 </li>
@@ -81,13 +81,13 @@
 
                 <li class="page-item {% if not pagination.has_next_page %}disabled{% endif %}">
                     <button type="submit" class="page-link"
-                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.next_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.next_page}}/{{user_dict.id|string}}{% endif %}">
+                        formaction="/plan_trip/reserve_dorm/{{pagination.next_page}}">
                         다음
                     </button>
                 </li>
                 <li class="page-item {% if not pagination.has_next_block %}disabled{% endif %}">
                     <button type="submit" class="page-link"
-                        formaction="{% if not user_dict %}/plan_trip/reserve_dorm/{{pagination.last_page}}{% else %}/plan_trip/reserve_dorm/{{pagination.last_page}}/{{user_dict.id|string}}{% endif %}">
+                        formaction="/plan_trip/reserve_dorm/{{pagination.last_page}}">
                         맨 끝
                     </button>
                 </li>
